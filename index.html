@@ -573,7 +573,7 @@ function delItem(id){if(!confirm('Eliminar esta entrada?'))return;sheetsCall({ac
 function clearAll(){if(!confirm('Borrar TODAS las notas?'))return;sheetsCall({action:'clearAll'},function(r){if(r.ok){DB=[];renderBase([]);updateStats([]);}else alert('Error: '+r.error);});}
 
 // AI
-async function callAI(msg,extra,maxTok){var k=gak();if(!k)throw new Error('Sin API key. Ve a Configuracion.');var sys=SYSTEM;if(extra)sys+='\n\nNOTAS DEL INVESTIGADOR:\n'+extra;var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:maxTok||1400,system:sys,messages:[{role:'user',content:msg}]})});var d=await r.json();if(d.error)throw new Error(d.error.message);return d.content.map(function(c){return c.text||'';}).join('');}
+async function callAI(msg,extra,maxTok){var k=gak();if(!k)throw new Error('Sin API key. Ve a Configuracion.');var sys=SYSTEM;if(extra)sys+='\n\nNOTAS DEL INVESTIGADOR:\n'+extra;var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTok||1400,system:sys,messages:[{role:'user',content:msg}]})});var d=await r.json();if(d.error)throw new Error(d.error.message);return d.content.map(function(c){return c.text||'';}).join('');}
 function setRes(id,t,cls){var e=document.getElementById(id);e.style.display='block';e.className='result'+(cls?' '+cls:'');e.textContent=t;}
 function showAct(id){var e=document.getElementById('act-'+id);if(e)e.style.display='flex';}
 function copyRes(id){navigator.clipboard.writeText(document.getElementById(id).textContent).then(function(){alert('Copiado.');});}
@@ -627,42 +627,61 @@ async function generateChapter(){
   var notasGuardadas='';
   if(usarNotas&&DB.length){
     var relevant=DB.filter(function(i){return i.cap&&i.cap===capVal&&i.tipo!=='__index__';});
-    if(!relevant.length)relevant=DB.filter(function(i){return i.tipo==='nota'||i.tipo==='cita';}).slice(0,6);
-    notasGuardadas=relevant.map(function(i){return '['+i.tipo+'] '+(i.ref||i.query||'').substring(0,100)+': '+(i.resultado||'').substring(0,400);}).join('\n\n');
+    if(!relevant.length)relevant=DB.filter(function(i){return i.tipo==='nota'||i.tipo==='cita';}).slice(0,5);
+    notasGuardadas=relevant.map(function(i){return '['+i.tipo+'] '+(i.ref||i.query||'').substring(0,80)+': '+(i.resultado||'').substring(0,300);}).join('\n\n');
   }
-  var extDesc={larga:'muy detallado, entre 1500 y 2500 palabras por epigrafe',media:'borrador denso, entre 800 y 1200 palabras por epigrafe',corta:'esquema desarrollado, entre 400 y 600 palabras por epigrafe'};
+  var extDesc={larga:'muy detallado, entre 1200 y 2000 palabras',media:'borrador denso, entre 700 y 1000 palabras',corta:'esquema desarrollado, entre 350 y 500 palabras'};
   var nivelDesc={completo:'nivel academico completo como un manual universitario publicado, con analisis profundo, ejemplos concretos y aparato critico',medio:'borrador academico solido para desarrollar posteriormente',esquema:'estructura bien argumentada con las ideas principales'};
-  var prompt='Escribe el borrador de los siguientes epigrafes del '+capVal+':\n\n'+selected.join('\n')+'\n\nNIVEL: '+nivelDesc[nivel]+'\nEXTENSION: '+extDesc[extension]+'\nENFOQUE SOCIO-FUNCIONAL: Para cada epigrafe, responde explicitamente: que funcion tenia este deporte en esta sociedad? Por que esta forma y no otra? Conecta con el marco teorico (Elias, Bourdieu, Guttmann, Mauss).'+(enfoque?'\nENFOQUE ESPECIFICO DEL AUTOR: '+enfoque:'')+'\n\nFORMATO OBLIGATORIO:\n- Citas APA en el texto: (Autor, Año, p. X)\n- Notas al pie numeradas: 1. Referencia completa\n- Seccion de BIBLIOGRAFIA al final con todas las fuentes citadas\n- Titulos de epigrafe claramente marcados\n- Prosa academica fluida, sin listas de puntos\n\nSolo usa fuentes reales y verificables. Si citas a Herodoto, Jenofonte, Elias, Bourdieu o Guttmann, asegurate de que las citas sean autenticas.';
   var btn=document.getElementById('btn-cr');
   btn.disabled=true;
   document.getElementById('icon-cr').innerHTML='<span class="spinner"></span>';
   var progress=document.getElementById('cr-progress');
   var fill=document.getElementById('cr-progress-fill');
   progress.style.display='block';
-  var pct=0;var pInterval=setInterval(function(){pct=Math.min(pct+2,90);fill.style.width=pct+'%';},400);
+  fill.style.width='0%';
   var out=document.getElementById('chapter-output');
   var body=document.getElementById('chapter-output-body');
   var titleEl=document.getElementById('chapter-output-title');
   out.style.display='block';
-  titleEl.textContent='Generando borrador de '+capVal+'...';
-  body.className='chapter-output-body loading';
-  body.textContent='El asistente esta escribiendo el borrador. Esto puede tardar entre 30 y 60 segundos segun el numero de epigrafes seleccionados...';
-  try{
-    var maxTok=nivel==='larga'?4000:(nivel==='media'?2500:1800);
-    var r=await callAI(prompt,notasGuardadas,maxTok);
-    clearInterval(pInterval);fill.style.width='100%';
-    setTimeout(function(){progress.style.display='none';fill.style.width='0';},600);
-    currentChapterText=r;
-    body.className='chapter-output-body';
-    body.textContent=r;
-    titleEl.textContent='Borrador — '+capVal;
-    lastItems.cap={id:Date.now(),tipo:'cap',cap:capVal,epigrafes:selected.join('; '),resultado:r,fecha:new Date().toLocaleString('es-ES')};
-  }catch(e){
-    clearInterval(pInterval);
-    body.className='chapter-output-body';
-    body.textContent='Error: '+e.message;
-    titleEl.textContent='Error al generar el borrador';
+  body.className='chapter-output-body';
+  body.textContent='';
+  currentChapterText='';
+  var allText='';
+  var noteCounter=1;
+  for(var i=0;i<selected.length;i++){
+    var ep=selected[i];
+    var pct=Math.round((i/selected.length)*90);
+    fill.style.width=pct+'%';
+    var epLabel=ep.indexOf('—')>-1?ep.split('—')[1].trim():ep;
+    titleEl.textContent='Epigrafe '+(i+1)+' de '+selected.length+': '+epLabel;
+    body.textContent=allText+(allText?'\n\n':'')+'[ Generando: '+ep+' ... ]';
+    var prompt='Escribe UNICAMENTE el siguiente epigrafe del '+capVal+':\n\n'+ep+'\n\nNIVEL: '+nivelDesc[nivel]+'\nEXTENSION: '+extDesc[extension]+(enfoque?'\nENFOQUE ESPECIFICO DEL AUTOR: '+enfoque:'')+'\n\nREGLAS OBLIGATORIAS:\n1. ENFOQUE SOCIO-FUNCIONAL: explica que funcion tenia esta practica en esta sociedad, por que esa forma y no otra, que necesitaba la sociedad de ella.\n2. Conecta con el marco teorico cuando sea pertinente (Elias, Bourdieu, Guttmann, Mauss).\n3. Citas APA en el texto: (Autor, Anio, p. X)\n4. Notas al pie numeradas empezando por el numero '+noteCounter+' — pon las notas al final de este epigrafe con el encabezado "Notas:"\n5. Prosa academica fluida, sin listas de puntos.\n6. Solo fuentes reales y verificables. Si no estas seguro de una cita, indicalo.\n7. NO incluyas bibliografia al final — solo las notas al pie.\n\nEscribe directamente el texto del epigrafe, empezando por su titulo.';
+    try{
+      var maxTok=nivel==='larga'?3500:(nivel==='media'?2200:1400);
+      var r=await callAI(prompt,notasGuardadas,maxTok);
+      var notasMatch=(r.match(/^\d+\./gm)||[]).length;
+      noteCounter+=Math.max(notasMatch,1);
+      allText+=(allText?'\n\n':'')+r;
+      body.textContent=allText;
+      body.scrollTop=body.scrollHeight;
+    }catch(e){
+      allText+=(allText?'\n\n':'')+'[ERROR en '+ep+': '+e.message+']';
+      body.textContent=allText;
+    }
   }
+  fill.style.width='95%';
+  titleEl.textContent='Generando bibliografia final...';
+  try{
+    var bibPrompt='Genera la BIBLIOGRAFIA FINAL completa en formato APA para el '+capVal+'.\n\nRecoge TODAS las fuentes citadas en el siguiente texto:\n\n'+allText.substring(0,4000)+'\n\nInstrucciones:\n- Lista solo las fuentes que aparezcan efectivamente citadas en el texto\n- Formato APA estricto, orden alfabetico\n- Separa: a) Fuentes primarias b) Bibliografia secundaria\n- Solo fuentes reales y verificables';
+    var bib=await callAI(bibPrompt,null,1800);
+    allText+='\n\n'+'='.repeat(50)+'\n\nBIBLIOGRAFIA\n\n'+bib;
+    body.textContent=allText;
+  }catch(e){allText+='\n\n[Error al generar bibliografia: '+e.message+']';}
+  fill.style.width='100%';
+  setTimeout(function(){progress.style.display='none';fill.style.width='0';},800);
+  currentChapterText=allText;
+  titleEl.textContent='Borrador completo — '+capVal+' ('+selected.length+' epigrafes)';
+  lastItems.cap={id:Date.now(),tipo:'cap',cap:capVal,epigrafes:selected.join('; '),resultado:allText,fecha:new Date().toLocaleString('es-ES')};
   btn.disabled=false;
   document.getElementById('icon-cr').textContent='✍️';
 }
@@ -672,19 +691,40 @@ async function refineChapter(){
   var chips=gchips('chips-refine');
   var instruccion=document.getElementById('cr-refine-instruccion').value.trim();
   var btn=document.getElementById('btn-refine');
-  btn.disabled=true;document.getElementById('icon-refine').innerHTML='<span class="spinner"></span>';
+  var titleEl=document.getElementById('chapter-output-title');
+  var origTitle=titleEl.textContent;
+  btn.disabled=true;
+  document.getElementById('icon-refine').innerHTML='<span class="spinner"></span>';
   var body=document.getElementById('chapter-output-body');
-  body.className='chapter-output-body loading';
-  body.textContent='Refinando el borrador...';
-  var prompt='Aqui esta el borrador actual:\n\n'+currentChapterText.substring(0,6000)+'\n\nACCIONES DE REFINAMIENTO: '+(chips.join(', ')||'mejorar estilo academico')+(instruccion?'\n\nINSTRUCCION ESPECIFICA: '+instruccion:'')+'\n\nMantiene el formato: citas APA en texto, notas al pie numeradas y bibliografia final. Devuelve el texto completo refinado, no solo los cambios.';
-  try{
-    var r=await callAI(prompt,null,4000);
-    currentChapterText=r;
-    body.className='chapter-output-body';
-    body.textContent=r;
-    lastItems.cap.resultado=r;
-  }catch(e){body.className='chapter-output-body';body.textContent='Error: '+e.message;}
-  btn.disabled=false;document.getElementById('icon-refine').textContent='✦';
+  titleEl.textContent='Refinando borrador...';
+  var textToRefine=currentChapterText;
+  var chunks=[];
+  if(textToRefine.length>5000){
+    var mid=textToRefine.lastIndexOf('\n\n',Math.floor(textToRefine.length/2));
+    if(mid>0){chunks=[textToRefine.substring(0,mid),textToRefine.substring(mid)];}
+    else{chunks=[textToRefine];}
+  } else {
+    chunks=[textToRefine];
+  }
+  var refined='';
+  for(var ci=0;ci<chunks.length;ci++){
+    if(chunks.length>1){titleEl.textContent='Refinando parte '+(ci+1)+' de '+chunks.length+'...';}
+    var prompt='Refina el siguiente fragmento de borrador academico:\n\n'+chunks[ci]+'\n\nACCIONES: '+(chips.join(', ')||'mejorar estilo academico')+(instruccion?'\nINSTRUCCION ESPECIFICA: '+instruccion:'')+(ci>0?'\nCONTEXTO: Este es el fragmento '+(ci+1)+' de un capitulo mas largo. Mantén la continuidad con la parte anterior.':'')+'\n\nMantiene: titulos de epigrafe, citas APA en texto, notas al pie numeradas. Devuelve el fragmento completo refinado.';
+    try{
+      var r=await callAI(prompt,null,3500);
+      refined+=(refined?'\n\n':'')+r;
+    }catch(e){
+      refined+=(refined?'\n\n':'')+chunks[ci]+'[Error al refinar: '+e.message+']';
+    }
+  }
+  currentChapterText=refined;
+  body.className='chapter-output-body';
+  body.textContent=refined;
+  body.scrollTop=0;
+  titleEl.textContent=origTitle+' [refinado]';
+  if(lastItems.cap)lastItems.cap.resultado=refined;
+  btn.disabled=false;
+  document.getElementById('icon-refine').textContent='✦';
 }
 
 function saveChapter(){var item=lastItems.cap;if(!item)return;var btn=event.target,orig=btn.textContent;sheetsCall({action:'save',item:item},function(r){if(r.ok){btn.textContent='Guardado';setTimeout(function(){btn.textContent=orig;},2000);}else alert('Error: '+r.error);});}
