@@ -6,16 +6,7 @@
 <title>Asistente de Investigacion · Manual Historia del Deporte · UCAM</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#1a1612;--ink2:#4a4540;--ink3:#8a8078;--ink4:#b8b0a8;
-  --paper:#faf8f4;--paper2:#f4f0e8;--paper3:#ece5d8;
-  --blue:#1e3a5f;--blue2:#2a5080;--blue-light:#e8f0fa;
-  --gold:#a07820;--gold-light:#f8f0d0;
-  --green:#1a4a2a;--green-light:#e0f0e4;
-  --red:#8b2020;--red-light:#fce8e8;
-  --border:#ddd8ce;--radius:8px;
-  --sidebar:240px;--shadow:0 1px 4px rgba(26,22,18,.08);
-}
+:root{--ink:#1a1612;--ink2:#4a4540;--ink3:#8a8078;--ink4:#b8b0a8;--paper:#faf8f4;--paper2:#f4f0e8;--paper3:#ece5d8;--blue:#1e3a5f;--blue2:#2a5080;--blue-light:#e8f0fa;--gold:#a07820;--gold-light:#f8f0d0;--green:#1a4a2a;--green-light:#e0f0e4;--red:#8b2020;--border:#ddd8ce;--radius:8px;--sidebar:240px;--shadow:0 1px 4px rgba(26,22,18,.08)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Source Sans 3',sans-serif;background:var(--paper);color:var(--ink);font-size:15px;display:flex;flex-direction:column;min-height:100vh}
 header{background:var(--blue);padding:0 28px;height:60px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-bottom:2px solid var(--gold)}
@@ -26,22 +17,20 @@ header{background:var(--blue);padding:0 28px;height:60px;display:flex;align-item
 .hstat-n{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold-light);line-height:1;text-align:right}
 .hstat-l{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-top:1px;text-align:right}
 .sync-bar{background:#162d4a;padding:5px 28px;font-size:12px;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:8px;flex-shrink:0}
-.dot{width:7px;height:7px;border-radius:50%;background:#4caf50;flex-shrink:0}
-.dot.off{background:#666}.dot.spin{background:var(--gold-light);animation:blink .9s infinite}
+.dot{width:7px;height:7px;border-radius:50%;background:#4caf50;flex-shrink:0}.dot.off{background:#666}.dot.spin{background:var(--gold-light);animation:blink .9s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .shell{display:flex;flex:1;overflow:hidden}
 aside{width:var(--sidebar);background:var(--paper2);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;padding:16px 0;overflow-y:auto}
 .nav-section{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink4);padding:0 18px 6px;margin-top:14px}
 .nav-section:first-child{margin-top:0}
 .nav-item{display:flex;align-items:center;gap:9px;padding:8px 18px;font-size:13px;font-weight:500;color:var(--ink2);cursor:pointer;border-left:3px solid transparent;transition:all .15s;user-select:none}
-.nav-item:hover{background:var(--paper3);color:var(--ink)}
-.nav-item.active{background:var(--blue-light);color:var(--blue);border-left-color:var(--blue)}
+.nav-item:hover{background:var(--paper3);color:var(--ink)}.nav-item.active{background:var(--blue-light);color:var(--blue);border-left-color:var(--blue)}
 .nav-icon{font-size:14px;width:16px;text-align:center;flex-shrink:0}
 nav hr{border:none;border-top:1px solid var(--border);margin:10px 18px}
-.content{flex:1;overflow-y:auto;padding:32px 44px;max-width:860px}
+.content{flex:1;overflow-y:auto;padding:32px 44px;max-width:900px}
 .panel{display:none}.panel.active{display:block}
 .page-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--ink);margin-bottom:5px}
-.page-sub{font-size:13.5px;color:var(--ink3);margin-bottom:24px;line-height:1.6;max-width:580px}
+.page-sub{font-size:13.5px;color:var(--ink3);margin-bottom:24px;line-height:1.6;max-width:600px}
 .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:14px;box-shadow:var(--shadow)}
 .card-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--ink3);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
 .field{margin-bottom:14px}.field:last-child{margin-bottom:0}
@@ -50,30 +39,23 @@ input[type=text],input[type=password],input[type=number],select,textarea{width:1
 input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,58,95,.07)}
 textarea{resize:vertical;min-height:88px;line-height:1.6}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{padding:5px 13px;font-size:12px;font-weight:500;border:1px solid var(--border);border-radius:20px;cursor:pointer;background:#fff;color:var(--ink2);transition:all .15s;user-select:none}
-.chip:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
-.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.chip:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
 .btn-primary{padding:10px 22px;font-size:14px;font-weight:600;font-family:'Source Sans 3',sans-serif;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;transition:background .15s;display:inline-flex;align-items:center;gap:8px}
-.btn-primary:hover{background:var(--blue2)}.btn-primary:disabled{opacity:.4;cursor:not-allowed}
-.btn-primary.full{width:100%;justify-content:center}
+.btn-primary:hover{background:var(--blue2)}.btn-primary:disabled{opacity:.4;cursor:not-allowed}.btn-primary.full{width:100%;justify-content:center}
 .btn-sm{padding:6px 14px;font-size:12.5px;font-weight:500;font-family:'Source Sans 3',sans-serif;border-radius:6px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--ink2);display:inline-flex;align-items:center;gap:5px;transition:all .15s}
 .btn-sm:hover{border-color:var(--blue);color:var(--blue)}
 .btn-green{background:var(--green);color:#fff;border-color:var(--green)}.btn-green:hover{opacity:.88;color:#fff;border-color:var(--green)}
 .btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}.btn-gold:hover{opacity:.88;color:#fff}
-.btn-red{background:var(--red);color:#fff;border-color:var(--red)}.btn-red:hover{opacity:.88;color:#fff}
 .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 .result{margin-top:14px;padding:18px 20px;background:var(--paper2);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:var(--radius);font-size:13.5px;line-height:1.8;white-space:pre-wrap;color:var(--ink);display:none}
-.result.loading{color:var(--ink3);font-style:italic;border-left-color:var(--ink3)}
-.result.error{border-left-color:var(--red);color:var(--red)}
-.result.ref-block{font-family:'Source Sans 3',sans-serif;background:#fff;border-left-color:var(--gold)}
+.result.loading{color:var(--ink3);font-style:italic;border-left-color:var(--ink3)}.result.error{border-left-color:var(--red);color:var(--red)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
 .stat-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;text-align:center;box-shadow:var(--shadow)}
 .stat-n{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--blue);line-height:1}
 .stat-l{font-size:11px;color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;margin-top:3px}
-.search-bar{display:flex;gap:8px;margin-bottom:14px}
-.search-bar input{flex:1}.search-bar select{width:210px}
+.search-bar{display:flex;gap:8px;margin-bottom:14px}.search-bar input{flex:1}.search-bar select{width:210px}
 .card-item{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:9px;box-shadow:var(--shadow);transition:box-shadow .15s}
 .card-item:hover{box-shadow:0 2px 10px rgba(26,22,18,.11)}
 .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:3px}
@@ -82,17 +64,14 @@ textarea{resize:vertical;min-height:88px;line-height:1.6}
 .card-preview{font-size:13px;color:var(--ink2);line-height:1.6;max-height:65px;overflow:hidden}
 .card-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
 .badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:2px 7px;border-radius:20px;margin-right:5px}
-.b-nota{background:var(--blue-light);color:var(--blue)}
-.b-gap{background:var(--gold-light);color:#7a5800}
-.b-cita{background:var(--green-light);color:var(--green)}
-.b-biblio{background:var(--paper3);color:var(--ink2)}
-.b-ref{background:#f0e8f8;color:#4a1a7a}
+.b-nota{background:var(--blue-light);color:var(--blue)}.b-gap{background:var(--gold-light);color:#7a5800}
+.b-cita{background:var(--green-light);color:var(--green)}.b-biblio{background:var(--paper3);color:var(--ink2)}
+.b-ref{background:#f0e8f8;color:#4a1a7a}.b-cap{background:#fce8e8;color:var(--red)}
 .del-btn{font-size:11px;color:var(--ink4);cursor:pointer;padding:3px 8px;border:1px solid var(--border);border-radius:5px;background:none;font-family:'Source Sans 3',sans-serif;transition:all .15s}
 .del-btn:hover{color:var(--red);border-color:var(--red)}
 .info-box{background:var(--blue-light);border:1px solid #b8d0ea;border-radius:var(--radius);padding:13px 16px;font-size:13px;color:var(--blue);margin-bottom:16px;line-height:1.8}
 .warn-box{background:var(--gold-light);border:1px solid #d4b040;border-radius:var(--radius);padding:11px 14px;font-size:13px;color:#6a4800;margin-bottom:14px;display:none}
 .ok-badge{font-size:12px;color:var(--green);font-weight:500;display:inline-block;margin-top:5px}
-.err-badge{font-size:12px;color:var(--red);font-weight:500;display:inline-block;margin-top:5px}
 .empty-state{text-align:center;color:var(--ink3);padding:44px 20px;font-size:14px;line-height:1.8}
 .steps{display:flex;flex-direction:column;gap:10px}
 .step{display:flex;gap:12px;align-items:flex-start}
@@ -100,47 +79,55 @@ textarea{resize:vertical;min-height:88px;line-height:1.6}
 .step-body{font-size:13px;color:var(--ink2);line-height:1.65}
 .step-body code{background:var(--paper3);padding:1px 5px;border-radius:3px;font-size:11.5px;font-family:monospace;color:var(--ink)}
 hr{border:none;border-top:1px solid var(--border);margin:24px 0}
-
 /* INDICE */
 .idx-chapter{background:#fff;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
-.idx-ch-header{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--paper2);border-bottom:1px solid var(--border);gap:8px}
+.idx-ch-header{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--paper2);border-bottom:1px solid var(--border)}
 .idx-ch-header input{flex:1;border:1px solid transparent;background:transparent;font-size:13.5px;font-weight:600;color:var(--ink);padding:3px 6px;border-radius:4px;font-family:'Source Sans 3',sans-serif}
 .idx-ch-header input:focus{border-color:var(--blue);background:#fff;outline:none}
 .idx-ch-header .ch-num{font-size:11px;font-weight:700;color:var(--ink3);white-space:nowrap;min-width:44px}
-.idx-epigrafo{display:flex;align-items:center;gap:8px;padding:6px 14px 6px 40px;border-bottom:1px solid var(--border)}
-.idx-epigrafo:last-child{border-bottom:none}
-.idx-epigrafo input{flex:1;border:1px solid transparent;background:transparent;font-size:13px;color:var(--ink2);padding:3px 6px;border-radius:4px;font-family:'Source Sans 3',sans-serif}
-.idx-epigrafo input:focus{border-color:var(--blue);background:#fff;outline:none}
-.idx-epigrafo .ep-num{font-size:11px;color:var(--ink4);min-width:36px}
+.idx-epigrafe{display:flex;align-items:center;gap:8px;padding:6px 14px 6px 40px;border-bottom:1px solid var(--border)}
+.idx-epigrafe:last-child{border-bottom:none}
+.idx-epigrafe input{flex:1;border:1px solid transparent;background:transparent;font-size:13px;color:var(--ink2);padding:3px 6px;border-radius:4px;font-family:'Source Sans 3',sans-serif}
+.idx-epigrafe input:focus{border-color:var(--blue);background:#fff;outline:none}
+.idx-epigrafe .ep-num{font-size:11px;color:var(--ink4);min-width:36px}
 .idx-btn{padding:2px 8px;font-size:11px;border:1px solid var(--border);border-radius:4px;cursor:pointer;background:none;color:var(--ink3);font-family:'Source Sans 3',sans-serif;transition:all .15s;white-space:nowrap}
-.idx-btn:hover{border-color:var(--blue);color:var(--blue)}
-.idx-btn.del:hover{border-color:var(--red);color:var(--red)}
+.idx-btn:hover{border-color:var(--blue);color:var(--blue)}.idx-btn.del:hover{border-color:var(--red);color:var(--red)}
 .idx-add-ep{padding:6px 14px 6px 40px;display:flex}
 .idx-add-ep button{font-size:12px;color:var(--ink3);border:1px dashed var(--border);background:none;border-radius:4px;padding:4px 12px;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:all .15s}
 .idx-add-ep button:hover{border-color:var(--blue);color:var(--blue)}
 .idx-toolbar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-
 /* REFERENCIAS */
 .ref-output{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-top:14px;display:none}
 .ref-section{margin-bottom:16px}
 .ref-section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink3);margin-bottom:8px;border-bottom:1px solid var(--border);padding-bottom:6px}
-.ref-text{font-size:13.5px;line-height:1.8;color:var(--ink);font-family:'Source Sans 3',sans-serif}
+.ref-text{font-size:13.5px;line-height:1.8;color:var(--ink)}
 .ref-copy-btn{margin-top:6px;padding:5px 12px;font-size:12px;border:1px solid var(--border);border-radius:5px;cursor:pointer;background:none;color:var(--ink2);font-family:'Source Sans 3',sans-serif;transition:all .15s}
 .ref-copy-btn:hover{border-color:var(--blue);color:var(--blue)}
 .note-counter-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;background:var(--paper2);padding:10px 14px;border-radius:var(--radius);font-size:13px}
 .note-counter-row label{color:var(--ink2);font-weight:500}
 .note-counter-row input{width:70px;padding:5px 8px;font-size:13px;border:1px solid var(--border);border-radius:5px}
-
-/* DOCS */
-.doc-preview{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-top:14px;font-size:13.5px;line-height:1.9;color:var(--ink);max-height:320px;overflow-y:auto;display:none}
-.doc-word-count{font-size:11px;color:var(--ink3);margin-top:8px;text-align:right}
-
+/* CAPITULO CREATOR */
+.ep-selector{display:flex;flex-direction:column;gap:6px;margin-bottom:4px}
+.ep-check{display:flex;align-items:center;gap:10px;padding:7px 10px;border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;background:#fff}
+.ep-check:hover{border-color:var(--blue);background:var(--blue-light)}
+.ep-check.selected{border-color:var(--blue);background:var(--blue-light)}
+.ep-check input[type=checkbox]{width:15px;height:15px;cursor:pointer;flex-shrink:0}
+.ep-check-label{font-size:13px;color:var(--ink2);cursor:pointer;flex:1}
+.ep-check.selected .ep-check-label{color:var(--blue);font-weight:500}
+.chapter-output{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:0;margin-top:14px;display:none;overflow:hidden}
+.chapter-output-header{background:var(--blue);color:#fff;padding:12px 20px;font-family:'Playfair Display',serif;font-size:16px;font-weight:700}
+.chapter-output-body{padding:20px 24px;font-size:14px;line-height:1.9;white-space:pre-wrap;color:var(--ink);max-height:600px;overflow-y:auto}
+.chapter-output-body.loading{color:var(--ink3);font-style:italic}
+.chapter-refine{background:var(--paper2);border-top:1px solid var(--border);padding:16px 20px}
+.chapter-refine-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink3);margin-bottom:10px}
+.refine-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.progress-bar{height:4px;background:var(--paper3);border-radius:2px;margin-bottom:12px;overflow:hidden;display:none}
+.progress-fill{height:100%;background:var(--blue);border-radius:2px;transition:width .4s;width:0}
 @keyframes spin{to{transform:rotate(360deg)}}
 .spinner{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
 </style>
 </head>
 <body>
-
 <header>
   <div style="display:flex;align-items:baseline;gap:10px">
     <span class="logo-title">Asistente de Investigacion</span>
@@ -154,9 +141,8 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 </header>
 <div class="sync-bar">
   <span class="dot off" id="sdot"></span>
-  <span id="smsg">Sin configurar — ve a Configuracion</span>
+  <span id="smsg">Sin configurar</span>
 </div>
-
 <div class="shell">
 <aside>
   <div class="nav-section">Investigacion</div>
@@ -164,31 +150,31 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
   <div class="nav-item" onclick="showTab('gaps',this)"><span class="nav-icon">💡</span>Gaps e ideas</div>
   <div class="nav-item" onclick="showTab('citas',this)"><span class="nav-icon">📖</span>Buscar citas</div>
   <div class="nav-item" onclick="showTab('biblio',this)"><span class="nav-icon">📚</span>Bibliografia APA</div>
-  <div class="nav-item" onclick="showTab('refs',this)"><span class="nav-icon">🔖</span>Generador de referencias</div>
+  <div class="nav-item" onclick="showTab('refs',this)"><span class="nav-icon">🔖</span>Generador referencias</div>
   <nav><hr></nav>
   <div class="nav-section">Escritura</div>
-  <div class="nav-item" onclick="showTab('docs',this)"><span class="nav-icon">📄</span>Taller con Google Docs</div>
+  <div class="nav-item" onclick="showTab('creator',this)"><span class="nav-icon">✍️</span>Crear capitulo</div>
+  <div class="nav-item" onclick="showTab('docs',this)"><span class="nav-icon">📄</span>Taller Google Docs</div>
   <div class="nav-item" onclick="showTab('indice',this)"><span class="nav-icon">📋</span>Indice del manual</div>
   <nav><hr></nav>
   <div class="nav-section">Proyecto</div>
   <div class="nav-item" onclick="showTab('base',this)"><span class="nav-icon">🗃</span>Base del proyecto</div>
   <div class="nav-item" onclick="showTab('config',this)"><span class="nav-icon">⚙</span>Configuracion</div>
 </aside>
-
 <div class="content">
 
 <!-- NOTAS -->
 <div id="panel-notas" class="panel active">
   <div class="page-title">Notas de lectura</div>
   <div class="page-sub">Introduce una referencia que hayas leido y el asistente la analiza, integra o expande para el capitulo correspondiente.</div>
-  <div id="warn-n" class="warn-box">Configura tu API key de Anthropic en Configuracion para activar el asistente IA.</div>
+  <div id="warn-n" class="warn-box">Configura tu API key de Anthropic en Configuracion.</div>
   <div class="card">
     <div class="card-title">Datos de la fuente</div>
     <div class="row2">
       <div class="field"><label>Capitulo</label><select id="n-cap"></select></div>
       <div class="field"><label>Tipo de fuente</label><select id="n-tipo"><option>Libro / monografia</option><option>Capitulo de libro</option><option>Articulo de revista</option><option>Tesis doctoral</option><option>Fuente primaria</option><option>Otro</option></select></div>
     </div>
-    <div class="field"><label>Referencia completa</label><input type="text" id="n-ref" placeholder="Ej: Briant, P. (2002). From Cyrus to Alexander. Winona Lake: Eisenbrauns."></div>
+    <div class="field"><label>Referencia completa</label><input type="text" id="n-ref" placeholder="Ej: Briant, P. (2002). From Cyrus to Alexander. Eisenbrauns."></div>
     <div class="field"><label>Tu nota / idea clave</label><textarea id="n-nota" placeholder="Describe la idea, argumento o cita extraida y como encaja en el capitulo..."></textarea></div>
   </div>
   <div class="card">
@@ -213,11 +199,11 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 <!-- GAPS -->
 <div id="panel-gaps" class="panel">
   <div class="page-title">Gaps e ideas nuevas</div>
-  <div class="page-sub">El asistente detecta que falta en un capitulo: perspectivas ausentes, epigrafes nuevos, debates historiograficos pendientes.</div>
+  <div class="page-sub">El asistente detecta que falta en un capitulo: perspectivas ausentes, epigrafes nuevos, debates historiograficos.</div>
   <div id="warn-g" class="warn-box">Configura tu API key en Configuracion.</div>
   <div class="card">
-    <div class="card-title">Parametros del analisis</div>
-    <div class="field"><label>Capitulo a analizar</label><select id="g-cap"></select></div>
+    <div class="card-title">Parametros</div>
+    <div class="field"><label>Capitulo</label><select id="g-cap"></select></div>
     <div class="field"><label>Tipo de analisis</label>
       <div class="chips" id="chips-g">
         <div class="chip on" data-v="Gaps tematicos">Gaps tematicos</div>
@@ -229,26 +215,26 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
     </div>
     <div class="field"><label>Contenido actual (opcional)</label><textarea id="g-texto" style="min-height:70px" placeholder="Describe lo que ya tienes escrito, o dejalo en blanco..."></textarea></div>
   </div>
-  <button class="btn-primary full" id="btn-g" onclick="runGaps()"><span id="icon-g">✦</span> Analizar gaps e ideas</button>
+  <button class="btn-primary full" id="btn-g" onclick="runGaps()"><span id="icon-g">✦</span> Analizar gaps</button>
   <div id="res-g" class="result"></div>
   <div class="actions" id="act-g" style="display:none">
     <button class="btn-sm btn-green" onclick="saveItem('gap')">⬇ Guardar</button>
     <button class="btn-sm" onclick="copyRes('res-g')">⎘ Copiar</button>
-    <button class="btn-sm btn-gold" onclick="exportItem('gap')">↗ Exportar .txt</button>
+    <button class="btn-sm btn-gold" onclick="exportItem('gap')">↗ Exportar</button>
   </div>
 </div>
 
 <!-- CITAS -->
 <div id="panel-citas" class="panel">
   <div class="page-title">Buscar citas reales</div>
-  <div class="page-sub">Describe que idea necesitas citar y el asistente localiza fuentes verificables en formato APA.</div>
+  <div class="page-sub">Describe que idea necesitas citar y el asistente localiza fuentes verificables en APA.</div>
   <div id="warn-c" class="warn-box">Configura tu API key en Configuracion.</div>
   <div class="card">
-    <div class="card-title">Descripcion de la busqueda</div>
-    <div class="field"><label>Que cita o afirmacion necesitas</label><textarea id="c-query" placeholder="Ej: Cita de Norbert Elias sobre la funcion social del deporte..."></textarea></div>
+    <div class="card-title">Busqueda</div>
+    <div class="field"><label>Que cita necesitas</label><textarea id="c-query" placeholder="Ej: Cita de Norbert Elias sobre la funcion social del deporte..."></textarea></div>
     <div class="row2">
-      <div class="field"><label>Periodo historico</label><select id="c-per"><option>Antiguedad</option><option>Edad Media</option><option>Edad Moderna</option><option>Siglo XIX</option><option>Siglo XX</option><option>Cualquiera</option></select></div>
-      <div class="field"><label>Tipo de fuente</label><select id="c-tipo"><option>Fuente primaria (autor historico)</option><option>Historiador del deporte</option><option>Sociologo / teorico</option><option>Cualquier tipo</option></select></div>
+      <div class="field"><label>Periodo</label><select id="c-per"><option>Antiguedad</option><option>Edad Media</option><option>Edad Moderna</option><option>Siglo XIX</option><option>Siglo XX</option><option>Cualquiera</option></select></div>
+      <div class="field"><label>Tipo de fuente</label><select id="c-tipo"><option>Fuente primaria</option><option>Historiador del deporte</option><option>Sociologo / teorico</option><option>Cualquier tipo</option></select></div>
     </div>
   </div>
   <button class="btn-primary full" id="btn-c" onclick="runCitas()"><span id="icon-c">✦</span> Buscar citas reales</button>
@@ -256,14 +242,14 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
   <div class="actions" id="act-c" style="display:none">
     <button class="btn-sm btn-green" onclick="saveItem('cita')">⬇ Guardar</button>
     <button class="btn-sm" onclick="copyRes('res-c')">⎘ Copiar</button>
-    <button class="btn-sm btn-gold" onclick="exportItem('cita')">↗ Exportar .txt</button>
+    <button class="btn-sm btn-gold" onclick="exportItem('cita')">↗ Exportar</button>
   </div>
 </div>
 
 <!-- BIBLIOGRAFIA -->
 <div id="panel-biblio" class="panel">
   <div class="page-title">Bibliografia APA</div>
-  <div class="page-sub">Genera una bibliografia academica completa y verificable para cada capitulo del manual.</div>
+  <div class="page-sub">Genera una bibliografia academica completa para cada capitulo.</div>
   <div id="warn-b" class="warn-box">Configura tu API key en Configuracion.</div>
   <div class="card">
     <div class="card-title">Parametros</div>
@@ -277,144 +263,202 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
         <div class="chip" data-v="open access">Open access</div>
       </div>
     </div>
-    <div class="field"><label>Tema especifico (opcional)</label><input type="text" id="b-tema" placeholder="Ej: polo persa, gladiadores, muscular Christianity..."></div>
+    <div class="field"><label>Tema especifico (opcional)</label><input type="text" id="b-tema" placeholder="Ej: polo persa, gladiadores..."></div>
   </div>
-  <button class="btn-primary full" id="btn-b" onclick="runBiblio()"><span id="icon-b">✦</span> Generar bibliografia APA</button>
+  <button class="btn-primary full" id="btn-b" onclick="runBiblio()"><span id="icon-b">✦</span> Generar bibliografia</button>
   <div id="res-b" class="result"></div>
   <div class="actions" id="act-b" style="display:none">
     <button class="btn-sm btn-green" onclick="saveItem('biblio')">⬇ Guardar</button>
     <button class="btn-sm" onclick="copyRes('res-b')">⎘ Copiar</button>
-    <button class="btn-sm btn-gold" onclick="exportItem('biblio')">↗ Exportar .txt</button>
+    <button class="btn-sm btn-gold" onclick="exportItem('biblio')">↗ Exportar</button>
   </div>
 </div>
 
-<!-- GENERADOR DE REFERENCIAS -->
+<!-- GENERADOR REFERENCIAS -->
 <div id="panel-refs" class="panel">
   <div class="page-title">Generador de referencias</div>
-  <div class="page-sub">Introduce los datos de una fuente y genera el bloque completo: cita en texto, nota al pie numerada y entrada bibliografica APA.</div>
+  <div class="page-sub">Genera el bloque completo: cita en texto APA, nota al pie numerada y entrada bibliografica.</div>
   <div class="note-counter-row">
     <label>Numero de la siguiente nota al pie:</label>
     <input type="number" id="note-counter" value="1" min="1" max="999">
-    <span style="font-size:12px;color:var(--ink3)">Se incrementa automaticamente con cada referencia generada</span>
+    <span style="font-size:12px;color:var(--ink3)">Se incrementa automaticamente</span>
   </div>
   <div class="card">
     <div class="card-title">Tipo de fuente</div>
-    <div class="field">
-      <div class="chips" id="chips-ref-tipo">
-        <div class="chip on" data-v="libro">Libro</div>
-        <div class="chip" data-v="capitulo">Capitulo de libro</div>
-        <div class="chip" data-v="articulo">Articulo de revista</div>
-        <div class="chip" data-v="primaria">Fuente primaria</div>
-        <div class="chip" data-v="tesis">Tesis doctoral</div>
-        <div class="chip" data-v="web">Recurso web</div>
-      </div>
+    <div class="chips" id="chips-ref-tipo">
+      <div class="chip on" data-v="libro">Libro</div>
+      <div class="chip" data-v="capitulo">Capitulo de libro</div>
+      <div class="chip" data-v="articulo">Articulo de revista</div>
+      <div class="chip" data-v="primaria">Fuente primaria</div>
+      <div class="chip" data-v="tesis">Tesis doctoral</div>
     </div>
   </div>
-  <div class="card" id="ref-form-libro">
+  <div class="card">
     <div class="card-title">Datos de la fuente</div>
     <div class="row2">
       <div class="field"><label>Apellido(s), Nombre del autor</label><input type="text" id="rf-autor" placeholder="Ej: Briant, Pierre"></div>
-      <div class="field"><label>Anio de publicacion</label><input type="text" id="rf-anio" placeholder="Ej: 2002"></div>
+      <div class="field"><label>Anio</label><input type="text" id="rf-anio" placeholder="Ej: 2002"></div>
     </div>
-    <div class="field"><label>Titulo de la obra</label><input type="text" id="rf-titulo" placeholder="Ej: From Cyrus to Alexander: A History of the Persian Empire"></div>
+    <div class="field"><label>Titulo de la obra</label><input type="text" id="rf-titulo" placeholder="Ej: From Cyrus to Alexander"></div>
     <div class="row2">
-      <div class="field"><label>Ciudad de publicacion</label><input type="text" id="rf-ciudad" placeholder="Ej: Winona Lake"></div>
+      <div class="field"><label>Ciudad</label><input type="text" id="rf-ciudad" placeholder="Ej: Winona Lake"></div>
       <div class="field"><label>Editorial</label><input type="text" id="rf-editorial" placeholder="Ej: Eisenbrauns"></div>
     </div>
-    <div class="row2">
-      <div class="field"><label>Pagina(s) citadas (opcional)</label><input type="text" id="rf-pagina" placeholder="Ej: 214 o 214-216"></div>
-      <div class="field"><label>Paginas totales del libro (opcional)</label><input type="text" id="rf-pagstotal" placeholder="Ej: 1073"></div>
-    </div>
-    <div class="field"><label>Texto exacto citado o idea a parafrasear (opcional)</label><textarea id="rf-cita" style="min-height:70px" placeholder="Si introduces el texto exacto, el generador creara la cita entre comillas. Si introduces la idea, la parafraseara en APA..."></textarea></div>
+    <div class="field"><label>Pagina(s) citadas (opcional)</label><input type="text" id="rf-pagina" placeholder="Ej: 214 o 214-216"></div>
+    <div class="field"><label>Texto citado o idea a parafrasear (opcional)</label><textarea id="rf-cita" style="min-height:70px" placeholder="Si introduces el texto exacto, generara la cita entre comillas..."></textarea></div>
   </div>
-  <button class="btn-primary full" id="btn-ref" onclick="generateRef()"><span id="icon-ref">✦</span> Generar bloque de referencia completo</button>
+  <button class="btn-primary full" onclick="generateRef()"><span>✦</span> Generar bloque completo</button>
   <div id="ref-output" class="ref-output">
-    <div class="ref-section">
-      <div class="ref-section-title">Cita en el texto (insertar en el parrafo)</div>
-      <div class="ref-text" id="ref-intext"></div>
-      <button class="ref-copy-btn" onclick="copySection('ref-intext')">⎘ Copiar cita en texto</button>
-    </div>
-    <div class="ref-section">
-      <div class="ref-section-title">Nota al pie (insertar al final de la pagina)</div>
-      <div class="ref-text" id="ref-footnote"></div>
-      <button class="ref-copy-btn" onclick="copySection('ref-footnote')">⎘ Copiar nota al pie</button>
-    </div>
-    <div class="ref-section">
-      <div class="ref-section-title">Entrada bibliografica APA (insertar en la bibliografia final)</div>
-      <div class="ref-text" id="ref-bib"></div>
-      <button class="ref-copy-btn" onclick="copySection('ref-bib')">⎘ Copiar entrada bibliografica</button>
-    </div>
+    <div class="ref-section"><div class="ref-section-title">Cita en el texto</div><div class="ref-text" id="ref-intext"></div><button class="ref-copy-btn" onclick="copySection('ref-intext')">⎘ Copiar</button></div>
+    <div class="ref-section"><div class="ref-section-title">Nota al pie</div><div class="ref-text" id="ref-footnote"></div><button class="ref-copy-btn" onclick="copySection('ref-footnote')">⎘ Copiar</button></div>
+    <div class="ref-section"><div class="ref-section-title">Entrada bibliografica APA</div><div class="ref-text" id="ref-bib"></div><button class="ref-copy-btn" onclick="copySection('ref-bib')">⎘ Copiar</button></div>
     <div style="display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
-      <button class="btn-sm btn-green" onclick="saveRef()">⬇ Guardar en el proyecto</button>
+      <button class="btn-sm btn-green" onclick="saveRef()">⬇ Guardar en proyecto</button>
       <button class="btn-sm btn-gold" onclick="copyAllRef()">⎘ Copiar bloque completo</button>
     </div>
   </div>
 </div>
 
-<!-- TALLER GOOGLE DOCS -->
-<div id="panel-docs" class="panel">
-  <div class="page-title">Taller con Google Docs</div>
-  <div class="page-sub">Conecta con tu Google Doc para que el asistente trabaje directamente con el borrador del manual.</div>
-  <div id="warn-docs" class="warn-box">Configura tu API key en Configuracion y el Client ID de Google en la seccion de abajo.</div>
+<!-- CREADOR DE CAPITULOS -->
+<div id="panel-creator" class="panel">
+  <div class="page-title">Crear capitulo</div>
+  <div class="page-sub">El asistente genera un borrador academico completo con citas APA, notas al pie y bibliografia. Luego puedes refinar cualquier seccion.</div>
+  <div id="warn-cr" class="warn-box">Configura tu API key de Anthropic en Configuracion.</div>
 
   <div class="card">
-    <div class="card-title">Conexion con Google Docs</div>
-    <div id="docs-auth-section">
-      <div class="info-box" style="margin-bottom:14px">
-        Para leer tu Google Doc necesitas autorizar el acceso. Pulsa el boton y selecciona tu cuenta de Google. Solo necesitas hacerlo una vez por dispositivo.
+    <div class="card-title">1 — Selecciona el capitulo</div>
+    <div class="field"><select id="cr-cap" onchange="loadEpigrafes()"><option value="">Selecciona un capitulo</option></select></div>
+  </div>
+
+  <div class="card" id="cr-eps-card" style="display:none">
+    <div class="card-title">2 — Epigrafes a desarrollar</div>
+    <div style="display:flex;gap:8px;margin-bottom:10px">
+      <button class="btn-sm" onclick="selectAllEps(true)">Seleccionar todos</button>
+      <button class="btn-sm" onclick="selectAllEps(false)">Deseleccionar todos</button>
+    </div>
+    <div id="cr-eps-list" class="ep-selector"></div>
+  </div>
+
+  <div class="card" id="cr-options-card" style="display:none">
+    <div class="card-title">3 — Parametros del borrador</div>
+    <div class="row2">
+      <div class="field">
+        <label>Nivel de detalle</label>
+        <select id="cr-nivel">
+          <option value="completo">Completo (como el polo persa)</option>
+          <option value="medio">Medio (borrador denso para desarrollar)</option>
+          <option value="esquema">Esquema desarrollado (estructura + ideas)</option>
+        </select>
       </div>
-      <div class="field"><label>Google Client ID (de Google Cloud Console)</label><input type="text" id="google-client-id" placeholder="xxxxx.apps.googleusercontent.com"><div style="font-size:11.5px;color:var(--ink3);margin-top:4px">Ve a Configuracion para ver como obtenerlo.</div></div>
-      <button class="btn-primary" onclick="initGoogleAuth()"><span id="icon-gauth">🔑</span> Autorizar acceso a Google Docs</button>
-      <div id="gauth-status" style="margin-top:8px;font-size:13px"></div>
+      <div class="field">
+        <label>Extension aproximada</label>
+        <select id="cr-extension">
+          <option value="larga">Larga (1500-2500 palabras por epigrafe)</option>
+          <option value="media">Media (800-1200 palabras por epigrafe)</option>
+          <option value="corta">Corta (400-600 palabras por epigrafe)</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>Enfoque especifico (opcional)</label>
+      <textarea id="cr-enfoque" style="min-height:60px" placeholder="Ej: Quiero enfatizar la funcion militar del deporte persa, conectar el polo con el jiju chino, y cerrar con Elias..."></textarea>
+    </div>
+    <div class="field">
+      <label>Usar notas guardadas del proyecto</label>
+      <div class="chips" id="chips-cr-notas">
+        <div class="chip on" data-v="si">Si, integrar las notas relevantes guardadas</div>
+        <div class="chip" data-v="no">No, generar sin notas previas</div>
+      </div>
     </div>
   </div>
 
-  <div class="card" id="docs-main-card">
-    <div class="card-title">Documento a trabajar</div>
-    <div class="field"><label>URL o ID del Google Doc</label><input type="text" id="doc-url" placeholder="https://docs.google.com/document/d/XXXXXXX/edit"></div>
-    <div class="field"><label>Seccion o capitulo a cargar (opcional)</label><select id="doc-chapter"></select></div>
-    <button class="btn-sm" onclick="loadDoc()" style="margin-bottom:0"><span id="icon-loaddoc">📥</span> Cargar documento</button>
-    <div id="doc-preview" class="doc-preview"></div>
-    <div id="doc-wordcount" class="doc-word-count" style="display:none"></div>
+  <div id="cr-generate-btn-wrap" style="display:none">
+    <div class="progress-bar" id="cr-progress"><div class="progress-fill" id="cr-progress-fill"></div></div>
+    <button class="btn-primary full" id="btn-cr" onclick="generateChapter()"><span id="icon-cr">✍️</span> Generar borrador completo</button>
   </div>
 
+  <div id="chapter-output" class="chapter-output">
+    <div class="chapter-output-header" id="chapter-output-title">Borrador del capitulo</div>
+    <div class="chapter-output-body" id="chapter-output-body"></div>
+    <div class="chapter-refine">
+      <div class="chapter-refine-title">Refinar el borrador</div>
+      <div class="refine-chips chips" id="chips-refine">
+        <div class="chip on" data-v="Mejorar el estilo academico y la fluidez">Mejorar estilo</div>
+        <div class="chip" data-v="Ampliar el analisis socio-funcional">Ampliar analisis</div>
+        <div class="chip" data-v="Anadir mas citas y referencias">Anadir citas</div>
+        <div class="chip" data-v="Reforzar la conclusion del capitulo">Reforzar conclusion</div>
+        <div class="chip" data-v="Anadir perspectiva de genero">Perspectiva de genero</div>
+        <div class="chip" data-v="Conectar mejor con capitulos anteriores">Conectar capitulos</div>
+      </div>
+      <div class="field" style="margin-top:10px">
+        <label>Instruccion especifica (opcional)</label>
+        <textarea id="cr-refine-instruccion" style="min-height:50px" placeholder="Ej: Amplia el epigrafe del polo persa con mas detalle sobre el Zurkhaneh, y conectalo con el jiju chino..."></textarea>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn-primary" id="btn-refine" onclick="refineChapter()"><span id="icon-refine">✦</span> Refinar</button>
+        <button class="btn-sm btn-green" onclick="saveChapter()">⬇ Guardar en proyecto</button>
+        <button class="btn-sm btn-gold" onclick="copyChapter()">⎘ Copiar todo para Google Docs</button>
+        <button class="btn-sm" onclick="exportChapter()">↗ Exportar .txt</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TALLER DOCS -->
+<div id="panel-docs" class="panel">
+  <div class="page-title">Taller con Google Docs</div>
+  <div class="page-sub">Conecta con tu Google Doc para que el asistente trabaje directamente con el borrador.</div>
+  <div id="warn-docs" class="warn-box">Configura tu API key en Configuracion.</div>
+  <div class="card">
+    <div class="card-title">Conexion con Google Docs</div>
+    <div class="info-box">Para leer tu Google Doc necesitas autorizar el acceso con tu cuenta de Google. Necesitas el Client ID de Google Cloud Console (ver Configuracion).</div>
+    <div class="field"><label>Google Client ID</label><input type="text" id="google-client-id" placeholder="xxxxx.apps.googleusercontent.com"></div>
+    <button class="btn-primary" onclick="initGoogleAuth()"><span id="icon-gauth">🔑</span> Autorizar acceso a Google Docs</button>
+    <div id="gauth-status" style="margin-top:8px;font-size:13px"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Documento</div>
+    <div class="field"><label>URL del Google Doc</label><input type="text" id="doc-url" placeholder="https://docs.google.com/document/d/XXXXXXX/edit"></div>
+    <button class="btn-sm" onclick="loadDoc()"><span id="icon-loaddoc">📥</span> Cargar documento</button>
+    <div id="doc-preview" style="background:var(--paper2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-top:12px;font-size:13px;line-height:1.8;max-height:250px;overflow-y:auto;display:none"></div>
+    <div id="doc-wordcount" style="font-size:11px;color:var(--ink3);margin-top:6px;text-align:right;display:none"></div>
+  </div>
   <div class="card" id="docs-ai-card" style="display:none">
-    <div class="card-title">Que hace el asistente con el documento</div>
+    <div class="card-title">Que hace el asistente</div>
     <div class="chips" id="chips-docs" style="margin-bottom:12px">
       <div class="chip on" data-v="Mejorar redaccion y estilo academico">Mejorar redaccion</div>
       <div class="chip" data-v="Integrar notas de investigacion guardadas">Integrar mis notas</div>
       <div class="chip" data-v="Anadir citas y referencias faltantes">Anadir citas</div>
       <div class="chip" data-v="Detectar inconsistencias argumentales">Detectar inconsistencias</div>
       <div class="chip" data-v="Proponer estructura alternativa">Proponer estructura</div>
-      <div class="chip" data-v="Ampliar con contenido nuevo">Ampliar contenido</div>
     </div>
-    <div class="field"><label>Instruccion especifica (opcional)</label><textarea id="doc-instruccion" style="min-height:60px" placeholder="Ej: Integra la nota sobre Briant que tengo guardada, añade una transicion hacia el polo persa y refuerza la conclusion con la perspectiva de Elias..."></textarea></div>
+    <div class="field"><label>Instruccion especifica (opcional)</label><textarea id="doc-instruccion" style="min-height:60px" placeholder="Ej: Integra la nota sobre Briant, refuerza la conclusion con Elias..."></textarea></div>
     <button class="btn-primary full" id="btn-docs" onclick="runDocs()"><span id="icon-docs">✦</span> Trabajar con el asistente</button>
     <div id="res-docs" class="result"></div>
     <div class="actions" id="act-docs" style="display:none">
-      <button class="btn-sm btn-green" onclick="saveItem('docs')">⬇ Guardar en el proyecto</button>
-      <button class="btn-sm" onclick="copyRes('res-docs')">⎘ Copiar texto mejorado</button>
-      <button class="btn-sm btn-gold" onclick="exportItem('docs')">↗ Exportar .txt</button>
+      <button class="btn-sm btn-green" onclick="saveItem('docs')">⬇ Guardar</button>
+      <button class="btn-sm" onclick="copyRes('res-docs')">⎘ Copiar</button>
+      <button class="btn-sm btn-gold" onclick="exportItem('docs')">↗ Exportar</button>
     </div>
   </div>
 </div>
 
-<!-- INDICE EDITABLE -->
+<!-- INDICE -->
 <div id="panel-indice" class="panel">
   <div class="page-title">Indice del manual</div>
-  <div class="page-sub">Edita titulos de capitulos y epigrafes directamente. Los cambios se sincronizan automaticamente con todos los desplegables de la app.</div>
+  <div class="page-sub">Edita titulos, epigrafes, orden. Los cambios se sincronizan con todos los desplegables de la app.</div>
   <div class="idx-toolbar">
-    <button class="btn-sm btn-green" onclick="saveIndex()">⬇ Guardar indice en Sheets</button>
+    <button class="btn-sm btn-green" onclick="saveIndex()">⬇ Guardar indice</button>
     <button class="btn-sm" onclick="addChapter()">+ Anadir capitulo</button>
-    <button class="btn-sm" onclick="resetIndex()" style="color:var(--red)">↺ Restaurar indice original</button>
+    <button class="btn-sm" onclick="resetIndex()" style="color:var(--red)">↺ Restaurar original</button>
   </div>
   <div id="idx-list"></div>
 </div>
 
-<!-- BASE DEL PROYECTO -->
+<!-- BASE -->
 <div id="panel-base" class="panel">
   <div class="page-title">Base del proyecto</div>
-  <div class="page-sub">Todo lo guardado en Google Sheets, sincronizado entre todos tus dispositivos.</div>
+  <div class="page-sub">Todo lo guardado en Google Sheets, sincronizado entre dispositivos.</div>
   <div class="stats-grid">
     <div class="stat-card"><div class="stat-n" id="s-total">-</div><div class="stat-l">Total</div></div>
     <div class="stat-card"><div class="stat-n" id="s-notas">-</div><div class="stat-l">Notas</div></div>
@@ -426,47 +470,38 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
     <select id="sc" onchange="filterBase()"><option value="">Todos los capitulos</option></select>
     <button class="btn-sm" onclick="loadFromSheets()">↻ Recargar</button>
   </div>
-  <div id="base-list"><div class="empty-state">Cargando notas desde Google Sheets...</div></div>
+  <div id="base-list"><div class="empty-state">Cargando desde Google Sheets...</div></div>
   <hr>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
-    <button class="btn-sm btn-gold" onclick="exportAll()">↗ Exportar todo como .txt</button>
+    <button class="btn-sm btn-gold" onclick="exportAll()">↗ Exportar todo .txt</button>
     <button class="btn-sm" onclick="clearAll()" style="color:var(--red)">🗑 Borrar todo</button>
   </div>
 </div>
 
-<!-- CONFIGURACION -->
+<!-- CONFIG -->
 <div id="panel-config" class="panel">
   <div class="page-title">Configuracion</div>
   <div class="page-sub">Configura una vez. En el segundo y tercer dispositivo pega las mismas claves.</div>
   <div class="card">
-    <div class="card-title">1 — API key de Anthropic (asistente IA)</div>
-    <div class="info-box">Ve a <strong>console.anthropic.com</strong> > API Keys > Create Key. Se guarda solo en este navegador.</div>
-    <div class="field"><label>API key de Anthropic</label><input type="password" id="apikey-input" placeholder="sk-ant-api03-..."></div>
+    <div class="card-title">1 — API key de Anthropic</div>
+    <div class="info-box">Ve a console.anthropic.com > API Keys > Create Key. Se guarda en este navegador.</div>
+    <div class="field"><label>API key</label><input type="password" id="apikey-input" placeholder="sk-ant-api03-..."></div>
     <button class="btn-primary" onclick="saveApiKey()">Guardar API key</button>
     <div id="key-status"></div>
   </div>
   <div class="card">
-    <div class="card-title">2 — Google Sheets (sincronizacion entre dispositivos)</div>
-    <div class="info-box">
-      <div class="steps">
-        <div class="step"><div class="step-n">1</div><div class="step-body">Ve a <strong>sheets.new</strong> y crea una hoja llamada <code>Manual Historia Deporte</code></div></div>
-        <div class="step"><div class="step-n">2</div><div class="step-body">Menu <strong>Extensiones > Apps Script</strong>. Pega el codigo del archivo <code>apps_script_notas.js</code>. Guarda.</div></div>
-        <div class="step"><div class="step-n">3</div><div class="step-body"><strong>Implementar > Nueva implementacion</strong>. Aplicacion web. Ejecutar como: Yo. Acceso: Cualquier usuario.</div></div>
-        <div class="step"><div class="step-n">4</div><div class="step-body">Copia la URL y pegala abajo.</div></div>
-      </div>
-    </div>
+    <div class="card-title">2 — Google Sheets (sincronizacion)</div>
     <div class="field"><label>URL del Apps Script</label><input type="text" id="sheets-url-input" placeholder="https://script.google.com/macros/s/.../exec"></div>
-    <button class="btn-primary" onclick="saveSheetsUrl()">Guardar URL y conectar</button>
+    <button class="btn-primary" onclick="saveSheetsUrl()">Guardar y conectar</button>
     <div id="sheets-status"></div>
   </div>
   <div class="card">
     <div class="card-title">3 — Google Client ID (para leer Google Docs)</div>
     <div class="info-box">
       <div class="steps">
-        <div class="step"><div class="step-n">1</div><div class="step-body">Ve a <strong>console.cloud.google.com</strong> > APIs y servicios > Credenciales</div></div>
-        <div class="step"><div class="step-n">2</div><div class="step-body">Crear credenciales > ID de cliente OAuth 2.0 > Tipo: Aplicacion web</div></div>
-        <div class="step"><div class="step-n">3</div><div class="step-body">En "Origenes JS autorizados" anadir la URL de tu GitHub Pages: <code>https://tu-usuario.github.io</code></div></div>
-        <div class="step"><div class="step-n">4</div><div class="step-body">Activa la Google Docs API en "Biblioteca de APIs". Copia el Client ID y pegalo abajo.</div></div>
+        <div class="step"><div class="step-n">1</div><div class="step-body">Ve a <strong>console.cloud.google.com</strong> > APIs > Credenciales > Crear > OAuth 2.0</div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-body">Origenes JS autorizados: <code>https://aleivaarcas-a11y.github.io</code></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-body">Activa la Google Docs API en Biblioteca. Copia el Client ID y pegalo abajo.</div></div>
       </div>
     </div>
     <div class="field"><label>Google Client ID</label><input type="text" id="gclientid-input" placeholder="xxxxx.apps.googleusercontent.com"></div>
@@ -476,291 +511,205 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 </div>
 
 </div></div>
-
 <script src="https://accounts.google.com/gsi/client" async></script>
 <script>
-var SYSTEM='Eres el asistente de investigacion del Prof. Dr. Alejandro Leiva Arcas (UCAM), quien escribe un manual universitario de Historia del Deporte para el Grado en CAFD. El enfoque es socio-funcional: siempre pregunta por que el deporte tiene esa forma en esa sociedad. Marco teorico: Norbert Elias, Pierre Bourdieu, Allen Guttmann, Marcel Mauss. Estilo: academico universitario, riguroso pero accesible, citas APA, notas al pie. Solo cita fuentes reales y verificables. Responde siempre en espanol.';
+var SYSTEM='Eres el asistente de investigacion del Prof. Dr. Alejandro Leiva Arcas (UCAM), quien escribe un manual universitario de Historia del Deporte para el Grado en CAFD. El enfoque es socio-funcional y cronologico-narrativo: siempre pregunta por que el deporte tiene esa forma en esa sociedad concreta. Marco teorico: Norbert Elias (proceso de civilizacion), Pierre Bourdieu (campo deportivo, distincion), Allen Guttmann (del ritual al record), Marcel Mauss (hecho social total). Estilo academico universitario, riguroso pero accesible para estudiantes de grado. Usa citas APA en texto, notas al pie numeradas y bibliografia al final. Solo cita fuentes reales y verificables. Responde siempre en espanol.';
 
-// INDICE POR DEFECTO
-var DEFAULT_INDEX = [
-  {num:'1',title:'Introduccion a la Historia del Deporte',eps:[{num:'1.1',t:'Historia del deporte como disciplina'},{num:'1.2',t:'Enfoques historiograficos: diacronico, sincronico, funcionalista'},{num:'1.3',t:'Fuentes para el estudio del deporte historico'},{num:'1.4',t:'El deporte como hecho social total (Marcel Mauss)'},{num:'1.5',t:'Actividades fisicas en las sociedades prehistoricas'}]},
+var DEFAULT_INDEX=[
+  {num:'1',title:'Introduccion a la Historia del Deporte',eps:[{num:'1.1',t:'Historia del deporte como disciplina'},{num:'1.2',t:'Enfoques historiograficos'},{num:'1.3',t:'Fuentes para el estudio del deporte historico'},{num:'1.4',t:'El deporte como hecho social total'},{num:'1.5',t:'Actividades fisicas en las sociedades prehistoricas'}]},
   {num:'2',title:'Egipto, Persia y Fenicia',eps:[{num:'2.1',t:'El Antiguo Egipto: cultura fisica y estratificacion social'},{num:'2.2',t:'Juegos, deportes de combate y deportes de exterior en Egipto'},{num:'2.3',t:'El deporte en Persia: el cuerpo al servicio del Imperio'},{num:'2.4',t:'El deporte en Fenicia: navegacion, comercio y cultura fisica'},{num:'2.5',t:'Analisis comparado: funcion del deporte en las tres civilizaciones'}]},
-  {num:'3',title:'Creta y Grecia',eps:[{num:'3.1',t:'La cultura minoica: deporte, ritual y sociedad palatina'},{num:'3.2',t:'La taurocatapsia: espectaculo, religion y acrobacia profesional'},{num:'3.3',t:'El agon griego: competicion, excelencia y valores civicos'},{num:'3.4',t:'Los Juegos de Olimpia: organizacion, pruebas y significado'},{num:'3.5',t:'Los Juegos Panhelenicos: Piticos, Istmicos y Nemeos'},{num:'3.6',t:'La educacion fisica en Atenas y Esparta: dos modelos opuestos'},{num:'3.7',t:'La mujer en el olimpismo antiguo: exclusion y resistencia'}]},
+  {num:'3',title:'Creta y Grecia',eps:[{num:'3.1',t:'La cultura minoica: deporte, ritual y sociedad palatina'},{num:'3.2',t:'La taurocatapsia'},{num:'3.3',t:'El agon griego: competicion, excelencia y valores civicos'},{num:'3.4',t:'Los Juegos de Olimpia'},{num:'3.5',t:'Los Juegos Panhelenicos'},{num:'3.6',t:'La educacion fisica en Atenas y Esparta'},{num:'3.7',t:'La mujer en el olimpismo antiguo'}]},
   {num:'4',title:'Etruria y Roma',eps:[{num:'4.1',t:'Del agon al ludus: el giro romano'},{num:'4.2',t:'Los espectaculos como instrumento politico: pan y circo'},{num:'4.3',t:'Gladiadores, venationes y naumaquias'},{num:'4.4',t:'Carreras de carros: economia, facciones e idolos de masas'},{num:'4.5',t:'Las termas: deporte, higiene y sociabilidad urbana'}]},
-  {num:'5',title:'China, Japon e India',eps:[{num:'5.1',t:'China: deporte entre armonia y competicion'},{num:'5.2',t:'El cuju y el jiju: futbol y polo como tecnologias de Estado'},{num:'5.3',t:'Japon: el bushido y la militarizacion del cuerpo'},{num:'5.4',t:'Kendo, judo y sumo: del ritual guerrero al deporte moderno'},{num:'5.5',t:'India: yoga, kalaripayattu y kushti'}]},
-  {num:'6',title:'Aztecas, Mayas e Incas',eps:[{num:'6.1',t:'El juego de pelota mesoamericano: rito, cosmovision y sacrificio'},{num:'6.2',t:'Los aztecas: educacion fisica al servicio de la guerra y los dioses'},{num:'6.3',t:'Los mayas: deporte, calendario y religion'},{num:'6.4',t:'Los incas: el huarachico y la seleccion del guerrero'}]},
-  {num:'7',title:'Alta y Baja Edad Media',eps:[{num:'7.1',t:'El cuerpo medieval: Iglesia, trabajo y cultura fisica'},{num:'7.2',t:'La caballeria: educacion fisica como formacion del guerrero-noble'},{num:'7.3',t:'Torneos y justas: funcion politica del espectaculo caballeresco'},{num:'7.4',t:'Deportes populares: soule, jeu de paume y juegos de pelota'},{num:'7.5',t:'Luchas regionales europeas: ringen, schwingen y backhold'},{num:'7.6',t:'El deporte en al-Andalus: lucha, equitacion y juegos de corte'},{num:'7.7',t:'Ajedrez, tauromaquia y juegos de azar: ocio y control social'}]},
-  {num:'8',title:'Renacimiento',eps:[{num:'8.1',t:'El humanismo y la recuperacion del cuerpo'},{num:'8.2',t:'Los pedagogos italianos: Da Feltre, Mercurialis y la gimnasia medica'},{num:'8.3',t:'Pedagogos franceses, ingleses y espanoles'},{num:'8.4',t:'Calcio florentino, golf escoces y esgrima'},{num:'8.5',t:'El cuerpo femenino en el Renacimiento'}]},
-  {num:'9',title:'Barroco',eps:[{num:'9.1',t:'Reforma, Contrarreforma y sus consecuencias para el deporte'},{num:'9.2',t:'Norte vs. sur de Europa: dos modelos deportivos divergentes'},{num:'9.3',t:'El deporte como distincion social en el siglo XVII'},{num:'9.4',t:'Comenio, Locke y Descartes: tres visiones del cuerpo educado'},{num:'9.5',t:'Lacrosse, hurling, curling y billar: nuevas practicas'}]},
-  {num:'10',title:'Ilustracion',eps:[{num:'10.1',t:'La educacion ilustrada y el lugar del cuerpo'},{num:'10.2',t:'Rousseau, Helvetius y el naturalismo pedagogico'},{num:'10.3',t:'El Philanthropinum y la institucionalizacion de la educacion fisica'},{num:'10.4',t:'Guts Muths y Pestalozzi: hacia una gimnastica sistematica'},{num:'10.5',t:'Jovellanos y la Ilustracion espanola'},{num:'10.6',t:'El asociacionismo deportivo ingles: funcion de clase y codificacion'}]},
-  {num:'11',title:'Las escuelas gimnasticas del siglo XIX',eps:[{num:'11.1',t:'Revolucion Industrial, cuerpo y nueva sociedad de masas'},{num:'11.2',t:'La escuela alemana: Jahn, Turner y el nacionalismo del cuerpo'},{num:'11.3',t:'La escuela sueca: Ling y la gimnasia higienica y terapeutica'},{num:'11.4',t:'La escuela francesa: Amoros y la gimnasia militar'},{num:'11.5',t:'La escuela espanola: entre la importacion y la adaptacion'},{num:'11.6',t:'Funcion ideologica de las escuelas gimnasticas'}]},
-  {num:'12',title:'El nacimiento del deporte moderno',eps:[{num:'12.1',t:'Las public schools inglesas y el muscular Christianity'},{num:'12.2',t:'La codificacion: futbol, rugby y cricket como casos modelo'},{num:'12.3',t:'El modelo anglosajón y su expansion global'},{num:'12.4',t:'Deporte, clase social y distincion en la Inglaterra victoriana'},{num:'12.5',t:'La mujer y el deporte en el siglo XIX'},{num:'12.6',t:'Primeras federaciones internacionales'}]},
-  {num:'13',title:'El movimiento olimpico moderno',eps:[{num:'13.1',t:'Pierre de Coubertin: ideologia, pedagogia y proyecto politico'},{num:'13.2',t:'Atenas 1896: el olimpismo entre el ideal y la realidad'},{num:'13.3',t:'El COI y la construccion institucional del olimpismo'},{num:'13.4',t:'Deporte y totalitarismos: Berlin 1936 como caso de estudio'},{num:'13.5',t:'El olimpismo en la Guerra Fria: boicots, politica y medallas'},{num:'13.6',t:'Amateurismo, profesionalismo y la crisis del ideal olimpico'}]}
+  {num:'5',title:'China, Japon e India',eps:[{num:'5.1',t:'China: deporte entre armonia y competicion'},{num:'5.2',t:'El cuju y el jiju: futbol y polo como tecnologias de Estado'},{num:'5.3',t:'Japon: el bushido y la militarizacion del cuerpo'},{num:'5.4',t:'Kendo, judo y sumo'},{num:'5.5',t:'India: yoga, kalaripayattu y kushti'}]},
+  {num:'6',title:'Aztecas, Mayas e Incas',eps:[{num:'6.1',t:'El juego de pelota mesoamericano'},{num:'6.2',t:'Los aztecas: educacion fisica al servicio de la guerra'},{num:'6.3',t:'Los mayas: deporte, calendario y religion'},{num:'6.4',t:'Los incas: el huarachico y la seleccion del guerrero'}]},
+  {num:'7',title:'Alta y Baja Edad Media',eps:[{num:'7.1',t:'El cuerpo medieval: Iglesia, trabajo y cultura fisica'},{num:'7.2',t:'La caballeria: educacion fisica como formacion del guerrero-noble'},{num:'7.3',t:'Torneos y justas: funcion politica del espectaculo caballeresco'},{num:'7.4',t:'Deportes populares: soule, jeu de paume y juegos de pelota'},{num:'7.5',t:'Luchas regionales europeas'},{num:'7.6',t:'El deporte en al-Andalus'},{num:'7.7',t:'Ajedrez, tauromaquia y juegos de azar'}]},
+  {num:'8',title:'Renacimiento',eps:[{num:'8.1',t:'El humanismo y la recuperacion del cuerpo'},{num:'8.2',t:'Los pedagogos italianos: Da Feltre y Mercurialis'},{num:'8.3',t:'Pedagogos franceses, ingleses y espanoles'},{num:'8.4',t:'Calcio florentino, golf escoces y esgrima'},{num:'8.5',t:'El cuerpo femenino en el Renacimiento'}]},
+  {num:'9',title:'Barroco',eps:[{num:'9.1',t:'Reforma, Contrarreforma y sus consecuencias para el deporte'},{num:'9.2',t:'Norte vs. sur de Europa: dos modelos deportivos'},{num:'9.3',t:'El deporte como distincion social en el siglo XVII'},{num:'9.4',t:'Comenio, Locke y Descartes: tres visiones del cuerpo educado'},{num:'9.5',t:'Lacrosse, hurling, curling y billar'}]},
+  {num:'10',title:'Ilustracion',eps:[{num:'10.1',t:'La educacion ilustrada y el lugar del cuerpo'},{num:'10.2',t:'Rousseau, Helvetius y el naturalismo pedagogico'},{num:'10.3',t:'El Philanthropinum y la institucionalizacion de la educacion fisica'},{num:'10.4',t:'Guts Muths y Pestalozzi'},{num:'10.5',t:'Jovellanos y la Ilustracion espanola'},{num:'10.6',t:'El asociacionismo deportivo ingles'}]},
+  {num:'11',title:'Las escuelas gimnasticas del siglo XIX',eps:[{num:'11.1',t:'Revolucion Industrial, cuerpo y nueva sociedad de masas'},{num:'11.2',t:'La escuela alemana: Jahn y el nacionalismo del cuerpo'},{num:'11.3',t:'La escuela sueca: Ling y la gimnasia higienica'},{num:'11.4',t:'La escuela francesa: Amoros y la gimnasia militar'},{num:'11.5',t:'La escuela espanola'},{num:'11.6',t:'Funcion ideologica de las escuelas gimnasticas'}]},
+  {num:'12',title:'El nacimiento del deporte moderno',eps:[{num:'12.1',t:'Las public schools inglesas y el muscular Christianity'},{num:'12.2',t:'La codificacion: futbol, rugby y cricket'},{num:'12.3',t:'El modelo anglosajón y su expansion global'},{num:'12.4',t:'Deporte, clase social y distincion en la Inglaterra victoriana'},{num:'12.5',t:'La mujer y el deporte en el siglo XIX'},{num:'12.6',t:'Primeras federaciones internacionales'}]},
+  {num:'13',title:'El movimiento olimpico moderno',eps:[{num:'13.1',t:'Pierre de Coubertin: ideologia, pedagogia y proyecto politico'},{num:'13.2',t:'Atenas 1896: el olimpismo entre el ideal y la realidad'},{num:'13.3',t:'El COI y la construccion institucional del olimpismo'},{num:'13.4',t:'Deporte y totalitarismos: Berlin 1936'},{num:'13.5',t:'El olimpismo en la Guerra Fria: boicots y politica'},{num:'13.6',t:'Amateurismo, profesionalismo y la crisis del ideal olimpico'}]}
 ];
 
-var IDX_KEY='hd_index_v1',AK='hd_ak',SK='hd_sk',GCK='hd_gck',DB=[],lastItems={},googleToken=null,currentDocText='';
+var IDX_KEY='hd_index_v1',AK='hd_ak',SK='hd_sk',GCK='hd_gck';
+var DB=[],lastItems={},googleToken=null,currentDocText='',currentChapterText='';
 var INDEX=[];
 
 function loadIndex(){try{var s=localStorage.getItem(IDX_KEY);INDEX=s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT_INDEX));}catch(e){INDEX=JSON.parse(JSON.stringify(DEFAULT_INDEX));}}
 function saveIndexLocal(){localStorage.setItem(IDX_KEY,JSON.stringify(INDEX));}
-function resetIndex(){if(!confirm('Restaurar el indice original? Se perderan todos los cambios.'))return;INDEX=JSON.parse(JSON.stringify(DEFAULT_INDEX));saveIndexLocal();renderIndex();populateSelects();if(gsk())saveIndexSheets();}
-
+function resetIndex(){if(!confirm('Restaurar indice original?'))return;INDEX=JSON.parse(JSON.stringify(DEFAULT_INDEX));saveIndexLocal();renderIndex();populateSelects();if(gsk())saveIndexSheets();}
 function gak(){return localStorage.getItem(AK)||'';}
 function gsk(){return localStorage.getItem(SK)||'';}
-function gck(){return localStorage.getItem(GCK)||document.getElementById('google-client-id').value||'';}
-
-function saveApiKey(){var v=document.getElementById('apikey-input').value.trim();if(!v.startsWith('sk-')){alert('La key debe empezar por sk-ant...');return;}localStorage.setItem(AK,v);document.getElementById('key-status').innerHTML='<span class="ok-badge">API key guardada correctamente.</span>';checkConfig();}
+function gck(){return localStorage.getItem(GCK)||'';}
+function saveApiKey(){var v=document.getElementById('apikey-input').value.trim();if(!v.startsWith('sk-')){alert('La key debe empezar por sk-ant...');return;}localStorage.setItem(AK,v);document.getElementById('key-status').innerHTML='<span class="ok-badge">API key guardada.</span>';checkConfig();}
 function saveSheetsUrl(){var v=document.getElementById('sheets-url-input').value.trim();if(!v.startsWith('https://script.google.com')){alert('URL incorrecta.');return;}localStorage.setItem(SK,v);setSyncState('spin','Conectando...');loadFromSheets();}
 function saveGClientId(){var v=document.getElementById('gclientid-input').value.trim();if(!v){alert('Introduce el Client ID.');return;}localStorage.setItem(GCK,v);document.getElementById('gclientid-status').innerHTML='<span class="ok-badge">Client ID guardado.</span>';}
-
-function checkConfig(){
-  var hk=!!gak();
-  ['n','g','c','b','docs'].forEach(function(x){var e=document.getElementById('warn-'+x);if(e)e.style.display=hk?'none':'block';});
-  if(gak()){var i=document.getElementById('apikey-input');if(i)i.placeholder='API key guardada';}
-  if(gsk()){var i2=document.getElementById('sheets-url-input');if(i2)i2.value=gsk().substring(0,55)+'...';}
-  if(localStorage.getItem(GCK)){var i3=document.getElementById('gclientid-input');if(i3)i3.value=localStorage.getItem(GCK).substring(0,30)+'...';}
-}
-
+function checkConfig(){var hk=!!gak();['n','g','c','b','cr','docs'].forEach(function(x){var e=document.getElementById('warn-'+x);if(e)e.style.display=hk?'none':'block';});if(gak()){var i=document.getElementById('apikey-input');if(i)i.placeholder='API key guardada';}if(gsk()){var i2=document.getElementById('sheets-url-input');if(i2)i2.value=gsk().substring(0,55)+'...';}if(gck()){var i3=document.getElementById('gclientid-input');if(i3)i3.value=gck().substring(0,30)+'...';}}
 function setSyncState(s,m){var d=document.getElementById('sdot'),t=document.getElementById('smsg');d.className='dot'+(s==='on'?'':s==='spin'?' spin':' off');t.textContent=m;}
-
-function showTab(n,el){
-  document.querySelectorAll('.nav-item').forEach(function(t){t.classList.remove('active');});
-  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
-  el.classList.add('active');document.getElementById('panel-'+n).classList.add('active');
-  if(n==='base')loadFromSheets();
-  if(n==='indice')renderIndex();
-}
-
-document.querySelectorAll('.chips').forEach(function(g){
-  g.querySelectorAll('.chip').forEach(function(c){
-    c.addEventListener('click',function(){
-      var isRefTipo=g.id==='chips-ref-tipo';
-      if(isRefTipo){g.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on');});}
-      c.classList.toggle('on');
-    });
-  });
-});
-
+function showTab(n,el){document.querySelectorAll('.nav-item').forEach(function(t){t.classList.remove('active');});document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});el.classList.add('active');document.getElementById('panel-'+n).classList.add('active');if(n==='base')loadFromSheets();if(n==='indice')renderIndex();}
+document.querySelectorAll('.chips').forEach(function(g){g.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){var solo=['chips-ref-tipo','chips-cr-notas'];if(solo.includes(g.id)){g.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on');});}c.classList.toggle('on');});});});
 function gchips(id){return Array.from(document.querySelectorAll('#'+id+' .chip.on')).map(function(c){return c.dataset.v;});}
 function gchip1(id){var c=document.querySelector('#'+id+' .chip.on');return c?c.dataset.v:'';}
 
-// POPULATE SELECTS FROM INDEX
 function populateSelects(){
-  var selIds=['n-cap','g-cap','b-cap','doc-chapter','sc'];
-  selIds.forEach(function(id){
-    var el=document.getElementById(id);if(!el)return;
-    var cur=el.value;
-    el.innerHTML='<option value="">Selecciona</option>';
-    INDEX.forEach(function(ch){
-      var opt=document.createElement('option');
-      opt.value='Cap. '+ch.num+' - '+ch.title;
-      opt.textContent='Cap. '+ch.num+' - '+ch.title;
-      el.appendChild(opt);
-    });
-    if(cur)el.value=cur;
-  });
+  var selIds=['n-cap','g-cap','b-cap','cr-cap','sc'];
+  selIds.forEach(function(id){var el=document.getElementById(id);if(!el)return;var cur=el.value;el.innerHTML='<option value="">Selecciona</option>';INDEX.forEach(function(ch){var opt=document.createElement('option');opt.value='Cap. '+ch.num+' - '+ch.title;opt.textContent='Cap. '+ch.num+' - '+ch.title;el.appendChild(opt);});if(cur)el.value=cur;});
 }
 
-// INDICE RENDER
-function renderIndex(){
-  var c=document.getElementById('idx-list');
-  c.innerHTML='';
-  INDEX.forEach(function(ch,ci){
-    var div=document.createElement('div');
-    div.className='idx-chapter';
-    var hdr=document.createElement('div');
-    hdr.className='idx-ch-header';
-    hdr.innerHTML='<span class="ch-num">Cap. '+ch.num+'</span>';
-    var inp=document.createElement('input');
-    inp.type='text';inp.value=ch.title;inp.placeholder='Titulo del capitulo';
-    inp.addEventListener('change',function(){INDEX[ci].title=this.value;saveIndexLocal();populateSelects();if(gsk())saveIndexSheets();});
-    hdr.appendChild(inp);
-    var delCh=document.createElement('button');
-    delCh.className='idx-btn del';delCh.textContent='Eliminar capitulo';
-    delCh.addEventListener('click',function(){if(!confirm('Eliminar este capitulo?'))return;INDEX.splice(ci,1);saveIndexLocal();renderIndex();populateSelects();if(gsk())saveIndexSheets();});
-    hdr.appendChild(delCh);
-    div.appendChild(hdr);
-    ch.eps.forEach(function(ep,ei){
-      var epDiv=document.createElement('div');epDiv.className='idx-epigrafe';
-      var epNum=document.createElement('span');epNum.className='ep-num';epNum.textContent=ep.num;
-      var epInp=document.createElement('input');epInp.type='text';epInp.value=ep.t;epInp.placeholder='Titulo del epigrafe';
-      epInp.addEventListener('change',function(){INDEX[ci].eps[ei].t=this.value;saveIndexLocal();if(gsk())saveIndexSheets();});
-      var upBtn=document.createElement('button');upBtn.className='idx-btn';upBtn.textContent='▲';
-      upBtn.addEventListener('click',function(){if(ei===0)return;var tmp=ch.eps[ei];ch.eps[ei]=ch.eps[ei-1];ch.eps[ei-1]=tmp;saveIndexLocal();renderIndex();if(gsk())saveIndexSheets();});
-      var dnBtn=document.createElement('button');dnBtn.className='idx-btn';dnBtn.textContent='▼';
-      dnBtn.addEventListener('click',function(){if(ei===ch.eps.length-1)return;var tmp=ch.eps[ei];ch.eps[ei]=ch.eps[ei+1];ch.eps[ei+1]=tmp;saveIndexLocal();renderIndex();if(gsk())saveIndexSheets();});
-      var delEp=document.createElement('button');delEp.className='idx-btn del';delEp.textContent='✕';
-      delEp.addEventListener('click',function(){if(!confirm('Eliminar este epigrafe?'))return;INDEX[ci].eps.splice(ei,1);saveIndexLocal();renderIndex();if(gsk())saveIndexSheets();});
-      epDiv.appendChild(epNum);epDiv.appendChild(epInp);epDiv.appendChild(upBtn);epDiv.appendChild(dnBtn);epDiv.appendChild(delEp);
-      div.appendChild(epDiv);
-    });
-    var addEp=document.createElement('div');addEp.className='idx-add-ep';
-    var addEpBtn=document.createElement('button');addEpBtn.textContent='+ Anadir epigrafe';
-    addEpBtn.addEventListener('click',function(){
-      var newNum=ch.num+'.'+(ch.eps.length+1);
-      ch.eps.push({num:newNum,t:'Nuevo epigrafe'});
-      saveIndexLocal();renderIndex();if(gsk())saveIndexSheets();
-    });
-    addEp.appendChild(addEpBtn);div.appendChild(addEp);
-    c.appendChild(div);
-  });
-}
-
-function addChapter(){
-  var newNum=String(INDEX.length+1);
-  INDEX.push({num:newNum,title:'Nuevo capitulo',eps:[{num:newNum+'.1',t:'Primer epigrafe'}]});
-  saveIndexLocal();renderIndex();populateSelects();if(gsk())saveIndexSheets();
-}
-
-function saveIndex(){
-  saveIndexLocal();
-  if(gsk())saveIndexSheets();
-  else alert('Guarda la URL de Google Sheets en Configuracion para sincronizar el indice.');
-}
-
-function saveIndexSheets(){
-  sheetsCall({action:'save',item:{id:'hd_index_v1',tipo:'__index__',resultado:JSON.stringify(INDEX),fecha:new Date().toLocaleString('es-ES')}},function(r){if(r.ok)setSyncState('on','Indice sincronizado');});
-}
+// INDICE
+function renderIndex(){var c=document.getElementById('idx-list');c.innerHTML='';INDEX.forEach(function(ch,ci){var div=document.createElement('div');div.className='idx-chapter';var hdr=document.createElement('div');hdr.className='idx-ch-header';hdr.innerHTML='<span class="ch-num">Cap. '+ch.num+'</span>';var inp=document.createElement('input');inp.type='text';inp.value=ch.title;inp.addEventListener('change',function(){INDEX[ci].title=this.value;saveIndexLocal();populateSelects();if(gsk())saveIndexSheets();});hdr.appendChild(inp);var delCh=document.createElement('button');delCh.className='idx-btn del';delCh.textContent='Eliminar capitulo';delCh.addEventListener('click',function(){if(!confirm('Eliminar este capitulo?'))return;INDEX.splice(ci,1);saveIndexLocal();renderIndex();populateSelects();if(gsk())saveIndexSheets();});hdr.appendChild(delCh);div.appendChild(hdr);ch.eps.forEach(function(ep,ei){var epDiv=document.createElement('div');epDiv.className='idx-epigrafe';var epNum=document.createElement('span');epNum.className='ep-num';epNum.textContent=ep.num;var epInp=document.createElement('input');epInp.type='text';epInp.value=ep.t;epInp.addEventListener('change',function(){INDEX[ci].eps[ei].t=this.value;saveIndexLocal();if(gsk())saveIndexSheets();});var upBtn=document.createElement('button');upBtn.className='idx-btn';upBtn.textContent='▲';upBtn.addEventListener('click',function(){if(ei===0)return;var tmp=ch.eps[ei];ch.eps[ei]=ch.eps[ei-1];ch.eps[ei-1]=tmp;saveIndexLocal();renderIndex();if(gsk())saveIndexSheets();});var dnBtn=document.createElement('button');dnBtn.className='idx-btn';dnBtn.textContent='▼';dnBtn.addEventListener('click',function(){if(ei===ch.eps.length-1)return;var tmp=ch.eps[ei];ch.eps[ei]=ch.eps[ei+1];ch.eps[ei+1]=tmp;saveIndexLocal();renderIndex();if(gsk())saveIndexSheets();});var delEp=document.createElement('button');delEp.className='idx-btn del';delEp.textContent='✕';delEp.addEventListener('click',function(){if(!confirm('Eliminar epigrafe?'))return;INDEX[ci].eps.splice(ei,1);saveIndexLocal();renderIndex();if(gsk())saveIndexSheets();});epDiv.appendChild(epNum);epDiv.appendChild(epInp);epDiv.appendChild(upBtn);epDiv.appendChild(dnBtn);epDiv.appendChild(delEp);div.appendChild(epDiv);});var addEp=document.createElement('div');addEp.className='idx-add-ep';var addEpBtn=document.createElement('button');addEpBtn.textContent='+ Anadir epigrafe';addEpBtn.addEventListener('click',function(){var newNum=ch.num+'.'+(ch.eps.length+1);ch.eps.push({num:newNum,t:'Nuevo epigrafe'});saveIndexLocal();renderIndex();if(gsk())saveIndexSheets();});addEp.appendChild(addEpBtn);div.appendChild(addEp);c.appendChild(div);});}
+function addChapter(){var n=String(INDEX.length+1);INDEX.push({num:n,title:'Nuevo capitulo',eps:[{num:n+'.1',t:'Primer epigrafe'}]});saveIndexLocal();renderIndex();populateSelects();if(gsk())saveIndexSheets();}
+function saveIndex(){saveIndexLocal();if(gsk())saveIndexSheets();else alert('Guarda la URL de Google Sheets en Configuracion.');}
+function saveIndexSheets(){sheetsCall({action:'save',item:{id:'hd_index_v1',tipo:'__index__',resultado:JSON.stringify(INDEX),fecha:new Date().toLocaleString('es-ES')}},function(){});}
 
 // SHEETS
 function sheetsCall(data,cb){var url=gsk();if(!url){cb({ok:false,error:'Sin URL'});return;}setSyncState('spin','Sincronizando...');fetch(url,{method:'POST',body:JSON.stringify(data),headers:{'Content-Type':'text/plain'}}).then(function(r){return r.json();}).then(function(r){setSyncState('on','Sincronizado con Google Sheets');cb(r);}).catch(function(e){setSyncState('off','Error: '+e.message);cb({ok:false,error:e.message});});}
-
 function loadFromSheets(){var url=gsk();if(!url){document.getElementById('base-list').innerHTML='<div class="empty-state">Configura la URL de Google Sheets en Configuracion.</div>';updateStats([]);return;}setSyncState('spin','Cargando...');fetch(url+'?action=getAll').then(function(r){return r.json();}).then(function(r){if(r.ok){var items=r.items||[];var idxItem=items.find(function(i){return i.tipo==='__index__';});if(idxItem){try{INDEX=JSON.parse(idxItem.resultado);saveIndexLocal();populateSelects();}catch(e){}}DB=items.filter(function(i){return i.tipo!=='__index__';});setSyncState('on','Sincronizado - '+DB.length+' notas');var ss=document.getElementById('sheets-status');if(ss)ss.innerHTML='<span class="ok-badge">Conectado. '+DB.length+' notas.</span>';updateStats(DB);renderBase(DB);}else{setSyncState('off','Error: '+r.error);}}).catch(function(){setSyncState('off','Error de conexion');});}
-
-function updateStats(items){document.getElementById('s-total').textContent=items.length;document.getElementById('s-notas').textContent=items.filter(function(i){return i.tipo==='nota';}).length;document.getElementById('s-gaps').textContent=items.filter(function(i){return i.tipo==='gap';}).length;document.getElementById('s-citas').textContent=items.filter(function(i){return['cita','biblio','ref'].includes(i.tipo);}).length;var caps=new Set(items.filter(function(i){return i.cap;}).map(function(i){return i.cap;}));document.getElementById('hs-total').textContent=items.length;document.getElementById('hs-caps').textContent=caps.size;}
-
+function updateStats(items){document.getElementById('s-total').textContent=items.length;document.getElementById('s-notas').textContent=items.filter(function(i){return i.tipo==='nota';}).length;document.getElementById('s-gaps').textContent=items.filter(function(i){return i.tipo==='gap';}).length;document.getElementById('s-citas').textContent=items.filter(function(i){return['cita','biblio','ref','cap'].includes(i.tipo);}).length;var caps=new Set(items.filter(function(i){return i.cap;}).map(function(i){return i.cap;}));document.getElementById('hs-total').textContent=items.length;document.getElementById('hs-caps').textContent=caps.size;}
 function filterBase(){var q=(document.getElementById('sq').value||'').toLowerCase(),cf=document.getElementById('sc').value||'';renderBase(DB.filter(function(i){var t=JSON.stringify(i).toLowerCase();return(!q||t.includes(q))&&(!cf||(i.cap&&i.cap.includes(cf.substring(0,20))));}));}
-
-function renderBase(items){if(!items)items=DB;var c=document.getElementById('base-list');if(!items.length){c.innerHTML='<div class="empty-state">No hay entradas guardadas.<br>Usa los modulos y pulsa Guardar en Google Sheets.</div>';return;}var bc={nota:'b-nota',gap:'b-gap',cita:'b-cita',biblio:'b-biblio',ref:'b-ref',docs:'b-nota'},bl={nota:'Nota',gap:'Gap/idea',cita:'Cita',biblio:'Bibliografia',ref:'Referencia',docs:'Doc'};var h='';items.forEach(function(item){var id=String(item.id),title=(item.ref||item.query||item.tema||item.analisis||item.tipo||'Sin titulo').substring(0,85),preview=(item.resultado||'').substring(0,200);h+='<div class="card-item"><div class="card-top"><div class="card-ref"><span class="badge '+(bc[item.tipo]||'b-nota')+'">'+(bl[item.tipo]||item.tipo)+'</span>'+title+(title.length>=85?'...':'')+'</div><button class="del-btn" onclick="delItem(\''+id+'\')">Eliminar</button></div><div class="card-meta">'+(item.cap||'')+' - '+(item.fecha||'')+'</div><div class="card-preview">'+preview+((item.resultado||'').length>200?'...':'')+'</div><div class="card-actions"><button class="btn-sm" onclick="copyById(\''+id+'\')">⎘ Copiar</button></div></div>';});c.innerHTML=h;}
-
+function renderBase(items){if(!items)items=DB;var c=document.getElementById('base-list');if(!items.length){c.innerHTML='<div class="empty-state">No hay entradas guardadas.<br>Usa los modulos y pulsa Guardar.</div>';return;}var bc={nota:'b-nota',gap:'b-gap',cita:'b-cita',biblio:'b-biblio',ref:'b-ref',cap:'b-cap',docs:'b-nota'},bl={nota:'Nota',gap:'Gap',cita:'Cita',biblio:'Biblio',ref:'Ref',cap:'Capitulo',docs:'Doc'};var h='';items.forEach(function(item){var id=String(item.id),title=(item.ref||item.query||item.tema||item.analisis||item.cap||item.tipo||'Sin titulo').substring(0,85),preview=(item.resultado||'').substring(0,200);h+='<div class="card-item"><div class="card-top"><div class="card-ref"><span class="badge '+(bc[item.tipo]||'b-nota')+'">'+(bl[item.tipo]||item.tipo)+'</span>'+title+(title.length>=85?'...':'')+'</div><button class="del-btn" onclick="delItem(\''+id+'\')">Eliminar</button></div><div class="card-meta">'+(item.cap||'')+' - '+(item.fecha||'')+'</div><div class="card-preview">'+preview+((item.resultado||'').length>200?'...':'')+'</div><div class="card-actions"><button class="btn-sm" onclick="copyById(\''+id+'\')">⎘ Copiar</button></div></div>';});c.innerHTML=h;}
 function copyById(id){var item=DB.find(function(i){return String(i.id)===String(id);});if(item)navigator.clipboard.writeText(item.resultado||'').then(function(){alert('Copiado.');});}
 function delItem(id){if(!confirm('Eliminar esta entrada?'))return;sheetsCall({action:'delete',id:id},function(r){if(r.ok)loadFromSheets();else alert('Error: '+r.error);});}
 function clearAll(){if(!confirm('Borrar TODAS las notas?'))return;sheetsCall({action:'clearAll'},function(r){if(r.ok){DB=[];renderBase([]);updateStats([]);}else alert('Error: '+r.error);});}
 
 // AI
-async function callAI(msg,extra){
-  var k=gak();if(!k)throw new Error('Sin API key. Ve a Configuracion.');
-  var sys=SYSTEM;
-  if(extra)sys+='\n\nNOTAS DEL INVESTIGADOR DISPONIBLES:\n'+extra;
-  var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1400,system:sys,messages:[{role:'user',content:msg}]})});
-  var d=await r.json();if(d.error)throw new Error(d.error.message);
-  return d.content.map(function(c){return c.text||'';}).join('');
-}
+async function callAI(msg,extra,maxTok){var k=gak();if(!k)throw new Error('Sin API key. Ve a Configuracion.');var sys=SYSTEM;if(extra)sys+='\n\nNOTAS DEL INVESTIGADOR:\n'+extra;var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTok||1400,system:sys,messages:[{role:'user',content:msg}]})});var d=await r.json();if(d.error)throw new Error(d.error.message);return d.content.map(function(c){return c.text||'';}).join('');}
 function setRes(id,t,cls){var e=document.getElementById(id);e.style.display='block';e.className='result'+(cls?' '+cls:'');e.textContent=t;}
 function showAct(id){var e=document.getElementById('act-'+id);if(e)e.style.display='flex';}
 function copyRes(id){navigator.clipboard.writeText(document.getElementById(id).textContent).then(function(){alert('Copiado.');});}
-function setbl(id,on){document.getElementById('btn-'+id).disabled=on;document.getElementById('icon-'+id).innerHTML=on?'<span class="spinner"></span>':'✦';}
+function setbl(id,on){var b=document.getElementById('btn-'+id),ic=document.getElementById('icon-'+id);if(b)b.disabled=on;if(ic)ic.innerHTML=on?'<span class="spinner"></span>':'✦';}
 
-async function runNotas(){var ref=document.getElementById('n-ref').value.trim(),nota=document.getElementById('n-nota').value.trim();if(!ref||!nota){alert('Rellena la referencia y la nota.');return;}var cap=document.getElementById('n-cap').value,tipo=document.getElementById('n-tipo').value,acc=gchips('chips-n');setbl('n',true);setRes('res-n','Analizando...','loading');document.getElementById('act-n').style.display='none';var p='Capitulo: '+(cap||'sin especificar')+'\nTipo: '+tipo+'\nRef: '+ref+'\nNota: '+nota+'\nAcciones: '+(acc.join(', ')||'analisis general')+'\n\nRealiza las acciones con enfoque socio-funcional del manual.';try{var r=await callAI(p);setRes('res-n',r);lastItems.nota={id:Date.now(),tipo:'nota',cap:cap,ref:ref,nota:nota,resultado:r,fecha:new Date().toLocaleString('es-ES')};showAct('n');}catch(e){setRes('res-n','Error: '+e.message,'error');}setbl('n',false);}
+// MODULOS IA
+async function runNotas(){var ref=document.getElementById('n-ref').value.trim(),nota=document.getElementById('n-nota').value.trim();if(!ref||!nota){alert('Rellena la referencia y la nota.');return;}var cap=document.getElementById('n-cap').value,tipo=document.getElementById('n-tipo').value,acc=gchips('chips-n');setbl('n',true);setRes('res-n','Analizando...','loading');document.getElementById('act-n').style.display='none';try{var r=await callAI('Capitulo: '+(cap||'sin especificar')+'\nTipo: '+tipo+'\nRef: '+ref+'\nNota: '+nota+'\nAcciones: '+(acc.join(', ')||'analisis general')+'\n\nRealiza las acciones con enfoque socio-funcional del manual.');setRes('res-n',r);lastItems.nota={id:Date.now(),tipo:'nota',cap:cap,ref:ref,nota:nota,resultado:r,fecha:new Date().toLocaleString('es-ES')};showAct('n');}catch(e){setRes('res-n','Error: '+e.message,'error');}setbl('n',false);}
+async function runGaps(){var cap=document.getElementById('g-cap').value;if(!cap){alert('Selecciona un capitulo.');return;}var tipos=gchips('chips-g'),texto=document.getElementById('g-texto').value.trim();setbl('g',true);setRes('res-g','Analizando...','loading');document.getElementById('act-g').style.display='none';try{var r=await callAI('Capitulo: '+cap+'\nAnalisis: '+(tipos.join(', ')||'general')+(texto?'\nContenido: '+texto:'')+'\n\nIdentifica gaps, perspectivas ausentes, epigrafes nuevos y debates historiograficos con autores y fuentes concretas.');setRes('res-g',r);lastItems.gap={id:Date.now(),tipo:'gap',cap:cap,analisis:tipos.join(', '),resultado:r,fecha:new Date().toLocaleString('es-ES')};showAct('g');}catch(e){setRes('res-g','Error: '+e.message,'error');}setbl('g',false);}
+async function runCitas(){var q=document.getElementById('c-query').value.trim();if(!q){alert('Describe que cita necesitas.');return;}var per=document.getElementById('c-per').value,tipo=document.getElementById('c-tipo').value;setbl('c',true);setRes('res-c','Buscando...','loading');document.getElementById('act-c').style.display='none';try{var r=await callAI('Busqueda: '+q+'\nPeriodo: '+per+'\nFuente: '+tipo+'\n\nProporciona 3-5 citas reales en APA. Si es fuente primaria, incluye original y traduccion. Indica si hay dudas sobre exactitud.');setRes('res-c',r);lastItems.cita={id:Date.now(),tipo:'cita',query:q,resultado:r,fecha:new Date().toLocaleString('es-ES')};showAct('c');}catch(e){setRes('res-c','Error: '+e.message,'error');}setbl('c',false);}
+async function runBiblio(){var cap=document.getElementById('b-cap').value;if(!cap){alert('Selecciona un capitulo.');return;}var tipos=gchips('chips-b'),tema=document.getElementById('b-tema').value.trim();setbl('b',true);setRes('res-b','Generando...','loading');document.getElementById('act-b').style.display='none';try{var r=await callAI('Capitulo: '+cap+'\nTipos: '+(tipos.join(', ')||'referencias esenciales')+(tema?'\nTema: '+tema:'')+'\n\nGenera 8-15 referencias reales en APA. Marca con * las 3 mas importantes. Solo verificables.');setRes('res-b',r);lastItems.biblio={id:Date.now(),tipo:'biblio',cap:cap,tema:tema,resultado:r,fecha:new Date().toLocaleString('es-ES')};showAct('b');}catch(e){setRes('res-b','Error: '+e.message,'error');}setbl('b',false);}
 
-async function runGaps(){var cap=document.getElementById('g-cap').value;if(!cap){alert('Selecciona un capitulo.');return;}var tipos=gchips('chips-g'),texto=document.getElementById('g-texto').value.trim();setbl('g',true);setRes('res-g','Analizando...','loading');document.getElementById('act-g').style.display='none';var p='Capitulo: '+cap+'\nAnalisis: '+(tipos.join(', ')||'general')+(texto?'\nContenido: '+texto:'')+'\n\nIdentifica gaps tematicos, perspectivas ausentes, epigrafes nuevos y debates historiograficos. Usa autores y fuentes concretas.';try{var r=await callAI(p);setRes('res-g',r);lastItems.gap={id:Date.now(),tipo:'gap',cap:cap,analisis:tipos.join(', '),resultado:r,fecha:new Date().toLocaleString('es-ES')};showAct('g');}catch(e){setRes('res-g','Error: '+e.message,'error');}setbl('g',false);}
-
-async function runCitas(){var q=document.getElementById('c-query').value.trim();if(!q){alert('Describe que cita necesitas.');return;}var per=document.getElementById('c-per').value,tipo=document.getElementById('c-tipo').value;setbl('c',true);setRes('res-c','Buscando...','loading');document.getElementById('act-c').style.display='none';var p='Busqueda: '+q+'\nPeriodo: '+per+'\nFuente: '+tipo+'\n\nProporciona 3-5 citas reales en APA. Si es fuente primaria, incluye original y traduccion al espanol. Indica si hay dudas sobre la exactitud.';try{var r=await callAI(p);setRes('res-c',r);lastItems.cita={id:Date.now(),tipo:'cita',query:q,resultado:r,fecha:new Date().toLocaleString('es-ES')};showAct('c');}catch(e){setRes('res-c','Error: '+e.message,'error');}setbl('c',false);}
-
-async function runBiblio(){var cap=document.getElementById('b-cap').value;if(!cap){alert('Selecciona un capitulo.');return;}var tipos=gchips('chips-b'),tema=document.getElementById('b-tema').value.trim();setbl('b',true);setRes('res-b','Generando...','loading');document.getElementById('act-b').style.display='none';var p='Capitulo: '+cap+'\nTipos: '+(tipos.join(', ')||'referencias esenciales')+(tema?'\nTema: '+tema:'')+'\n\nGenera 8-15 referencias reales en APA. Marca con * las 3 mas importantes.';try{var r=await callAI(p);setRes('res-b',r);lastItems.biblio={id:Date.now(),tipo:'biblio',cap:cap,tema:tema,resultado:r,fecha:new Date().toLocaleString('es-ES')};showAct('b');}catch(e){setRes('res-b','Error: '+e.message,'error');}setbl('b',false);}
-
-// GENERADOR DE REFERENCIAS
-function generateRef(){
-  var tipo=gchip1('chips-ref-tipo')||'libro';
-  var autor=document.getElementById('rf-autor').value.trim();
-  var anio=document.getElementById('rf-anio').value.trim();
-  var titulo=document.getElementById('rf-titulo').value.trim();
-  var ciudad=document.getElementById('rf-ciudad').value.trim();
-  var editorial=document.getElementById('rf-editorial').value.trim();
-  var pagina=document.getElementById('rf-pagina').value.trim();
-  var cita=document.getElementById('rf-cita').value.trim();
-  var noteNum=parseInt(document.getElementById('note-counter').value)||1;
-  if(!autor||!anio||!titulo){alert('Rellena al menos autor, anio y titulo.');return;}
-
-  var apellido=autor.split(',')[0].trim();
-  var intext='('+apellido+', '+anio+(pagina?', p. '+pagina:'')+')';
-  var footnote=noteNum+'. '+autor+' ('+anio+'). '+titulo+'.'+(ciudad?' '+ciudad+':':'')+' '+(editorial||'')+'.'+(pagina?' p. '+pagina+'.':'');
-  var bibEntry=autor+' ('+anio+'). '+titulo+'.'+(ciudad?' '+ciudad+':':'')+' '+(editorial||'')+'.';
-  if(cita){
-    var citaFormateada='"'+cita+'" '+intext;
-    document.getElementById('ref-intext').textContent=citaFormateada;
-  } else {
-    document.getElementById('ref-intext').textContent=intext;
-  }
-  document.getElementById('ref-footnote').textContent=footnote;
-  document.getElementById('ref-bib').textContent=bibEntry;
-  document.getElementById('ref-output').style.display='block';
-  document.getElementById('note-counter').value=noteNum+1;
-  lastItems.ref={id:Date.now(),tipo:'ref',ref:autor+' ('+anio+'). '+titulo,resultado:'CITA EN TEXTO:\n'+document.getElementById('ref-intext').textContent+'\n\nNOTA AL PIE:\n'+footnote+'\n\nBIBLIOGRAFIA APA:\n'+bibEntry,fecha:new Date().toLocaleString('es-ES')};
+// CREADOR DE CAPITULOS
+function loadEpigrafes(){
+  var capVal=document.getElementById('cr-cap').value;
+  var card=document.getElementById('cr-eps-card');
+  var optCard=document.getElementById('cr-options-card');
+  var btnWrap=document.getElementById('cr-generate-btn-wrap');
+  var list=document.getElementById('cr-eps-list');
+  document.getElementById('chapter-output').style.display='none';
+  if(!capVal){card.style.display='none';optCard.style.display='none';btnWrap.style.display='none';return;}
+  var ch=INDEX.find(function(c){return('Cap. '+c.num+' - '+c.title)===capVal;});
+  if(!ch){card.style.display='none';return;}
+  list.innerHTML='';
+  ch.eps.forEach(function(ep){
+    var div=document.createElement('div');
+    div.className='ep-check selected';
+    var chk=document.createElement('input');
+    chk.type='checkbox';chk.checked=true;chk.id='epchk-'+ep.num;
+    chk.addEventListener('change',function(){div.classList.toggle('selected',this.checked);});
+    var lbl=document.createElement('label');
+    lbl.className='ep-check-label';lbl.htmlFor='epchk-'+ep.num;
+    lbl.textContent=ep.num+' — '+ep.t;
+    div.appendChild(chk);div.appendChild(lbl);
+    div.addEventListener('click',function(e){if(e.target!==chk){chk.checked=!chk.checked;div.classList.toggle('selected',chk.checked);}});
+    list.appendChild(div);
+  });
+  card.style.display='block';optCard.style.display='block';btnWrap.style.display='block';
 }
 
-function copySection(id){navigator.clipboard.writeText(document.getElementById(id).textContent).then(function(){alert('Copiado al portapapeles.');});}
+function selectAllEps(val){document.querySelectorAll('#cr-eps-list .ep-check input').forEach(function(chk){chk.checked=val;chk.closest('.ep-check').classList.toggle('selected',val);});}
+
+async function generateChapter(){
+  var capVal=document.getElementById('cr-cap').value;
+  if(!capVal){alert('Selecciona un capitulo.');return;}
+  var selected=Array.from(document.querySelectorAll('#cr-eps-list .ep-check input:checked')).map(function(chk){return chk.closest('.ep-check').querySelector('label').textContent;});
+  if(!selected.length){alert('Selecciona al menos un epigrafe.');return;}
+  var nivel=document.getElementById('cr-nivel').value;
+  var extension=document.getElementById('cr-extension').value;
+  var enfoque=document.getElementById('cr-enfoque').value.trim();
+  var usarNotas=gchip1('chips-cr-notas')==='si';
+  var notasGuardadas='';
+  if(usarNotas&&DB.length){
+    var relevant=DB.filter(function(i){return i.cap&&i.cap===capVal&&i.tipo!=='__index__';});
+    if(!relevant.length)relevant=DB.filter(function(i){return i.tipo==='nota'||i.tipo==='cita';}).slice(0,6);
+    notasGuardadas=relevant.map(function(i){return '['+i.tipo+'] '+(i.ref||i.query||'').substring(0,100)+': '+(i.resultado||'').substring(0,400);}).join('\n\n');
+  }
+  var extDesc={larga:'muy detallado, entre 1500 y 2500 palabras por epigrafe',media:'borrador denso, entre 800 y 1200 palabras por epigrafe',corta:'esquema desarrollado, entre 400 y 600 palabras por epigrafe'};
+  var nivelDesc={completo:'nivel academico completo como un manual universitario publicado, con analisis profundo, ejemplos concretos y aparato critico',medio:'borrador academico solido para desarrollar posteriormente',esquema:'estructura bien argumentada con las ideas principales'};
+  var prompt='Escribe el borrador de los siguientes epigrafes del '+capVal+':\n\n'+selected.join('\n')+'\n\nNIVEL: '+nivelDesc[nivel]+'\nEXTENSION: '+extDesc[extension]+'\nENFOQUE SOCIO-FUNCIONAL: Para cada epigrafe, responde explicitamente: que funcion tenia este deporte en esta sociedad? Por que esta forma y no otra? Conecta con el marco teorico (Elias, Bourdieu, Guttmann, Mauss).'+(enfoque?'\nENFOQUE ESPECIFICO DEL AUTOR: '+enfoque:'')+'\n\nFORMATO OBLIGATORIO:\n- Citas APA en el texto: (Autor, Año, p. X)\n- Notas al pie numeradas: 1. Referencia completa\n- Seccion de BIBLIOGRAFIA al final con todas las fuentes citadas\n- Titulos de epigrafe claramente marcados\n- Prosa academica fluida, sin listas de puntos\n\nSolo usa fuentes reales y verificables. Si citas a Herodoto, Jenofonte, Elias, Bourdieu o Guttmann, asegurate de que las citas sean autenticas.';
+  var btn=document.getElementById('btn-cr');
+  btn.disabled=true;
+  document.getElementById('icon-cr').innerHTML='<span class="spinner"></span>';
+  var progress=document.getElementById('cr-progress');
+  var fill=document.getElementById('cr-progress-fill');
+  progress.style.display='block';
+  var pct=0;var pInterval=setInterval(function(){pct=Math.min(pct+2,90);fill.style.width=pct+'%';},400);
+  var out=document.getElementById('chapter-output');
+  var body=document.getElementById('chapter-output-body');
+  var titleEl=document.getElementById('chapter-output-title');
+  out.style.display='block';
+  titleEl.textContent='Generando borrador de '+capVal+'...';
+  body.className='chapter-output-body loading';
+  body.textContent='El asistente esta escribiendo el borrador. Esto puede tardar entre 30 y 60 segundos segun el numero de epigrafes seleccionados...';
+  try{
+    var maxTok=nivel==='larga'?4000:(nivel==='media'?2500:1800);
+    var r=await callAI(prompt,notasGuardadas,maxTok);
+    clearInterval(pInterval);fill.style.width='100%';
+    setTimeout(function(){progress.style.display='none';fill.style.width='0';},600);
+    currentChapterText=r;
+    body.className='chapter-output-body';
+    body.textContent=r;
+    titleEl.textContent='Borrador — '+capVal;
+    lastItems.cap={id:Date.now(),tipo:'cap',cap:capVal,epigrafes:selected.join('; '),resultado:r,fecha:new Date().toLocaleString('es-ES')};
+  }catch(e){
+    clearInterval(pInterval);
+    body.className='chapter-output-body';
+    body.textContent='Error: '+e.message;
+    titleEl.textContent='Error al generar el borrador';
+  }
+  btn.disabled=false;
+  document.getElementById('icon-cr').textContent='✍️';
+}
+
+async function refineChapter(){
+  if(!currentChapterText){alert('Primero genera un borrador.');return;}
+  var chips=gchips('chips-refine');
+  var instruccion=document.getElementById('cr-refine-instruccion').value.trim();
+  var btn=document.getElementById('btn-refine');
+  btn.disabled=true;document.getElementById('icon-refine').innerHTML='<span class="spinner"></span>';
+  var body=document.getElementById('chapter-output-body');
+  body.className='chapter-output-body loading';
+  body.textContent='Refinando el borrador...';
+  var prompt='Aqui esta el borrador actual:\n\n'+currentChapterText.substring(0,6000)+'\n\nACCIONES DE REFINAMIENTO: '+(chips.join(', ')||'mejorar estilo academico')+(instruccion?'\n\nINSTRUCCION ESPECIFICA: '+instruccion:'')+'\n\nMantiene el formato: citas APA en texto, notas al pie numeradas y bibliografia final. Devuelve el texto completo refinado, no solo los cambios.';
+  try{
+    var r=await callAI(prompt,null,4000);
+    currentChapterText=r;
+    body.className='chapter-output-body';
+    body.textContent=r;
+    lastItems.cap.resultado=r;
+  }catch(e){body.className='chapter-output-body';body.textContent='Error: '+e.message;}
+  btn.disabled=false;document.getElementById('icon-refine').textContent='✦';
+}
+
+function saveChapter(){var item=lastItems.cap;if(!item)return;var btn=event.target,orig=btn.textContent;sheetsCall({action:'save',item:item},function(r){if(r.ok){btn.textContent='Guardado';setTimeout(function(){btn.textContent=orig;},2000);}else alert('Error: '+r.error);});}
+function copyChapter(){if(!currentChapterText){alert('Genera primero un borrador.');return;}navigator.clipboard.writeText(currentChapterText).then(function(){alert('Texto copiado al portapapeles. Ahora puedes pegarlo en Google Docs con Cmd+V.');});}
+function exportChapter(){if(!currentChapterText){alert('Genera primero un borrador.');return;}var cap=document.getElementById('cr-cap').value;dlTxt('MANUAL HISTORIA DEL DEPORTE - UCAM\n'+cap+'\n'+'='.repeat(50)+'\n\n'+currentChapterText,'hd_capitulo_'+Date.now()+'.txt');}
+
+// REFERENCIAS
+function generateRef(){var tipo=gchip1('chips-ref-tipo')||'libro';var autor=document.getElementById('rf-autor').value.trim();var anio=document.getElementById('rf-anio').value.trim();var titulo=document.getElementById('rf-titulo').value.trim();var ciudad=document.getElementById('rf-ciudad').value.trim();var editorial=document.getElementById('rf-editorial').value.trim();var pagina=document.getElementById('rf-pagina').value.trim();var cita=document.getElementById('rf-cita').value.trim();var noteNum=parseInt(document.getElementById('note-counter').value)||1;if(!autor||!anio||!titulo){alert('Rellena al menos autor, anio y titulo.');return;}var apellido=autor.split(',')[0].trim();var intext=cita?'"'+cita+'" ('+apellido+', '+anio+(pagina?', p. '+pagina:'')+')'  :'('+apellido+', '+anio+(pagina?', p. '+pagina:'')+')';var footnote=noteNum+'. '+autor+' ('+anio+'). '+titulo+'.'+(ciudad?' '+ciudad+':':'')+' '+(editorial||'')+'.'+(pagina?' p. '+pagina+'.':'');var bibEntry=autor+' ('+anio+'). '+titulo+'.'+(ciudad?' '+ciudad+':':'')+' '+(editorial||'')+'.';document.getElementById('ref-intext').textContent=intext;document.getElementById('ref-footnote').textContent=footnote;document.getElementById('ref-bib').textContent=bibEntry;document.getElementById('ref-output').style.display='block';document.getElementById('note-counter').value=noteNum+1;lastItems.ref={id:Date.now(),tipo:'ref',ref:autor+' ('+anio+'). '+titulo,resultado:'CITA EN TEXTO:\n'+intext+'\n\nNOTA AL PIE:\n'+footnote+'\n\nBIBLIOGRAFIA APA:\n'+bibEntry,fecha:new Date().toLocaleString('es-ES')};}
+function copySection(id){navigator.clipboard.writeText(document.getElementById(id).textContent).then(function(){alert('Copiado.');});}
 function copyAllRef(){var t=document.getElementById('ref-intext').textContent+'\n\n---NOTA AL PIE---\n'+document.getElementById('ref-footnote').textContent+'\n\n---BIBLIOGRAFIA---\n'+document.getElementById('ref-bib').textContent;navigator.clipboard.writeText(t).then(function(){alert('Bloque completo copiado.');});}
-function saveRef(){var item=lastItems.ref;if(!item)return;sheetsCall({action:'save',item:item},function(r){if(r.ok)alert('Referencia guardada en Google Sheets.');else alert('Error: '+r.error);});}
+function saveRef(){var item=lastItems.ref;if(!item)return;sheetsCall({action:'save',item:item},function(r){if(r.ok)alert('Referencia guardada.');else alert('Error: '+r.error);});}
 
-// GOOGLE DOCS OAUTH
-function initGoogleAuth(){
-  var cid=document.getElementById('google-client-id').value.trim()||gck();
-  if(!cid){alert('Introduce el Client ID de Google en el campo de arriba o en Configuracion.');return;}
-  localStorage.setItem(GCK,cid);
-  var client=google.accounts.oauth2.initTokenClient({client_id:cid,scope:'https://www.googleapis.com/auth/documents.readonly',callback:function(resp){if(resp.error){document.getElementById('gauth-status').innerHTML='<span class="err-badge">Error: '+resp.error+'</span>';return;}googleToken=resp.access_token;document.getElementById('gauth-status').innerHTML='<span class="ok-badge">Autorizado correctamente. Ya puedes cargar documentos.</span>';document.getElementById('docs-ai-card').style.display='block';}});
-  client.requestAccessToken();
-}
+// GOOGLE DOCS
+function initGoogleAuth(){var cid=document.getElementById('google-client-id').value.trim()||gck();if(!cid){alert('Introduce el Client ID.');return;}localStorage.setItem(GCK,cid);if(typeof google==='undefined'||!google.accounts){alert('La libreria de Google no ha cargado todavia. Espera unos segundos y vuelve a intentarlo.');return;}var client=google.accounts.oauth2.initTokenClient({client_id:cid,scope:'https://www.googleapis.com/auth/documents.readonly',callback:function(resp){if(resp.error){document.getElementById('gauth-status').innerHTML='<span style="color:var(--red);font-size:12px">Error: '+resp.error+'</span>';return;}googleToken=resp.access_token;document.getElementById('gauth-status').innerHTML='<span class="ok-badge">Autorizado correctamente.</span>';document.getElementById('docs-ai-card').style.display='block';}});client.requestAccessToken();}
+async function loadDoc(){if(!googleToken){alert('Primero autoriza el acceso a Google.');return;}var urlVal=document.getElementById('doc-url').value.trim();if(!urlVal){alert('Introduce la URL del Google Doc.');return;}var match=urlVal.match(/\/document\/d\/([a-zA-Z0-9_-]+)/);if(!match){alert('URL de Google Doc no valida.');return;}var docId=match[1];document.getElementById('icon-loaddoc').textContent='⏳';try{var r=await fetch('https://docs.googleapis.com/v1/documents/'+docId,{headers:{Authorization:'Bearer '+googleToken}});if(!r.ok){var err=await r.json();throw new Error(err.error.message);}var doc=await r.json();var text='';(doc.body.content||[]).forEach(function(el){if(el.paragraph){(el.paragraph.elements||[]).forEach(function(pe){if(pe.textRun)text+=pe.textRun.content;});}});currentDocText=text;var preview=document.getElementById('doc-preview');preview.style.display='block';preview.textContent=text.substring(0,2000)+(text.length>2000?'\n\n[... texto truncado ...]':'');var words=text.split(/\s+/).filter(function(w){return w.length>0;}).length;var wc=document.getElementById('doc-wordcount');wc.style.display='block';wc.textContent=words+' palabras - "'+doc.title+'"';document.getElementById('docs-ai-card').style.display='block';document.getElementById('icon-loaddoc').textContent='📥';}catch(e){alert('Error al cargar: '+e.message);document.getElementById('icon-loaddoc').textContent='📥';}}
+async function runDocs(){if(!currentDocText){alert('Carga primero un documento.');return;}var chips=gchips('chips-docs');var instruccion=document.getElementById('doc-instruccion').value.trim();var notasGuardadas=DB.slice(0,8).map(function(i){return '['+i.tipo+'] '+(i.ref||i.query||'').substring(0,100)+': '+(i.resultado||'').substring(0,300);}).join('\n\n');setbl('docs',true);setRes('res-docs','Trabajando con el documento...','loading');document.getElementById('act-docs').style.display='none';var p='DOCUMENTO:\n'+currentDocText.substring(0,3000)+'\n\nACCIONES: '+(chips.join(', ')||'mejorar redaccion')+(instruccion?'\nINSTRUCCION: '+instruccion:'')+'\n\nTrabaja con este borrador con el enfoque socio-funcional del manual.';try{var r=await callAI(p,notasGuardadas,2000);setRes('res-docs',r);lastItems.docs={id:Date.now(),tipo:'docs',acciones:chips.join(', '),resultado:r,fecha:new Date().toLocaleString('es-ES')};showAct('docs');}catch(e){setRes('res-docs','Error: '+e.message,'error');}setbl('docs',false);}
 
-async function loadDoc(){
-  if(!googleToken){alert('Primero autoriza el acceso a Google pulsando el boton de autorizacion.');return;}
-  var urlVal=document.getElementById('doc-url').value.trim();
-  if(!urlVal){alert('Introduce la URL del Google Doc.');return;}
-  var match=urlVal.match(/\/document\/d\/([a-zA-Z0-9_-]+)/);
-  if(!match){alert('URL de Google Doc no valida. Asegurate de que sea del formato https://docs.google.com/document/d/ID/edit');return;}
-  var docId=match[1];
-  document.getElementById('icon-loaddoc').textContent='⏳';
-  try{
-    var r=await fetch('https://docs.googleapis.com/v1/documents/'+docId,{headers:{Authorization:'Bearer '+googleToken}});
-    if(!r.ok){var err=await r.json();throw new Error(err.error.message);}
-    var doc=await r.json();
-    var text='';
-    (doc.body.content||[]).forEach(function(el){if(el.paragraph){(el.paragraph.elements||[]).forEach(function(pe){if(pe.textRun)text+=pe.textRun.content;});}});
-    currentDocText=text;
-    var preview=document.getElementById('doc-preview');
-    preview.style.display='block';
-    preview.textContent=text.substring(0,3000)+(text.length>3000?'\n\n[... texto truncado para preview. El asistente recibe el documento completo ...]':'');
-    var words=text.split(/\s+/).filter(function(w){return w.length>0;}).length;
-    var wc=document.getElementById('doc-wordcount');
-    wc.style.display='block';
-    wc.textContent=words+' palabras cargadas de: "'+doc.title+'"';
-    document.getElementById('docs-ai-card').style.display='block';
-    document.getElementById('icon-loaddoc').textContent='📥';
-  } catch(e){
-    alert('Error al cargar el documento: '+e.message);
-    document.getElementById('icon-loaddoc').textContent='📥';
-  }
-}
-
-async function runDocs(){
-  if(!currentDocText){alert('Carga primero un documento de Google Docs.');return;}
-  var chips=gchips('chips-docs');
-  var instruccion=document.getElementById('doc-instruccion').value.trim();
-  var cap=document.getElementById('doc-chapter').value;
-  var notasGuardadas=DB.slice(0,8).map(function(i){return '['+i.tipo+'] '+((i.ref||i.query||'').substring(0,100))+': '+((i.resultado||'').substring(0,300));}).join('\n\n');
-  setbl('docs',true);setRes('res-docs','Trabajando con el documento...','loading');document.getElementById('act-docs').style.display='none';
-  var p='DOCUMENTO (primeros 3000 caracteres):\n'+currentDocText.substring(0,3000)+'\n\nCAPITULO: '+(cap||'no especificado')+'\nACCIONES: '+(chips.join(', ')||'mejorar redaccion')+(instruccion?'\nINSTRUCCION ESPECIFICA: '+instruccion:'')+'\n\nTrabaja con este borrador teniendo en cuenta el enfoque socio-funcional del manual y las notas de investigacion disponibles.';
-  try{
-    var r=await callAI(p,notasGuardadas);
-    setRes('res-docs',r);
-    lastItems.docs={id:Date.now(),tipo:'docs',cap:cap,acciones:chips.join(', '),resultado:r,fecha:new Date().toLocaleString('es-ES')};
-    showAct('docs');
-  }catch(e){setRes('res-docs','Error: '+e.message,'error');}
-  setbl('docs',false);
-}
-
+// GUARDAR / EXPORTAR
 function saveItem(tipo){var item=lastItems[tipo];if(!item)return;var btn=event.target,orig=btn.textContent;sheetsCall({action:'save',item:item},function(r){if(r.ok){btn.textContent='Guardado';setTimeout(function(){btn.textContent=orig;},2000);DB.unshift(item);updateStats(DB);}else alert('Error: '+r.error);});}
-
-function exportItem(tipo){var item=lastItems[tipo];if(!item)return;var lines=['MANUAL HISTORIA DEL DEPORTE - UCAM','='.repeat(50),'Tipo: '+item.tipo,'Fecha: '+(item.fecha||'')];if(item.cap)lines.push('Capitulo: '+item.cap);if(item.ref)lines.push('Referencia: '+item.ref);if(item.nota)lines.push('Nota: '+item.nota);if(item.query)lines.push('Busqueda: '+item.query);lines.push('','RESULTADO:',item.resultado);dlTxt(lines.join('\n'),'hd_'+tipo+'_'+Date.now()+'.txt');}
-
-function exportAll(){if(!DB.length){alert('No hay notas guardadas.');return;}var parts=['MANUAL HISTORIA DEL DEPORTE - UCAM','BASE DE INVESTIGACION','='.repeat(50),''];DB.forEach(function(i){var lines=['['+i.tipo.toUpperCase()+'] '+(i.fecha||''),'Capitulo: '+(i.cap||'-')];if(i.ref)lines.push('Ref: '+i.ref);if(i.query)lines.push('Busqueda: '+i.query);if(i.nota)lines.push('Nota: '+i.nota);lines.push('','RESULTADO:',i.resultado,'','-'.repeat(60));parts=parts.concat(lines);});dlTxt(parts.join('\n'),'hd_proyecto_completo.txt');}
-
+function exportItem(tipo){var item=lastItems[tipo];if(!item)return;var lines=['MANUAL HISTORIA DEL DEPORTE - UCAM','='.repeat(50),'Tipo: '+item.tipo,'Fecha: '+(item.fecha||'')];if(item.cap)lines.push('Capitulo: '+item.cap);if(item.ref)lines.push('Ref: '+item.ref);if(item.nota)lines.push('Nota: '+item.nota);if(item.query)lines.push('Busqueda: '+item.query);lines.push('','RESULTADO:',item.resultado);dlTxt(lines.join('\n'),'hd_'+tipo+'_'+Date.now()+'.txt');}
+function exportAll(){if(!DB.length){alert('No hay notas.');return;}var parts=['MANUAL HISTORIA DEL DEPORTE - UCAM','BASE DE INVESTIGACION','='.repeat(50),''];DB.forEach(function(i){var lines=['['+i.tipo.toUpperCase()+'] '+(i.fecha||''),'Capitulo: '+(i.cap||'-')];if(i.ref)lines.push('Ref: '+i.ref);if(i.nota)lines.push('Nota: '+i.nota);lines.push('','RESULTADO:',i.resultado,'','-'.repeat(60));parts=parts.concat(lines);});dlTxt(parts.join('\n'),'hd_proyecto_completo.txt');}
 function dlTxt(text,name){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));a.download=name;a.click();}
 
 // INIT
-loadIndex();
-populateSelects();
-checkConfig();
+loadIndex();populateSelects();checkConfig();
 if(gsk()){loadFromSheets();}else{setSyncState('off','Sin configurar - ve a Configuracion');}
 </script>
 </body>
