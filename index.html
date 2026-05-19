@@ -657,7 +657,7 @@ async function generateChapter(){
     body.textContent=allText+(allText?'\n\n':'')+'[ Generando: '+ep+' ... ]';
     var prompt='Escribe UNICAMENTE el siguiente epigrafe del '+capVal+':\n\n'+ep+'\n\nNIVEL: '+nivelDesc[nivel]+'\nEXTENSION: '+extDesc[extension]+(enfoque?'\nENFOQUE ESPECIFICO DEL AUTOR: '+enfoque:'')+'\n\nREGLAS OBLIGATORIAS:\n1. ENFOQUE SOCIO-FUNCIONAL: explica que funcion tenia esta practica en esta sociedad, por que esa forma y no otra, que necesitaba la sociedad de ella.\n2. Conecta con el marco teorico cuando sea pertinente (Elias, Bourdieu, Guttmann, Mauss).\n3. Citas APA en el texto: (Autor, Anio, p. X)\n4. Notas al pie numeradas empezando por el numero '+noteCounter+' — pon las notas al final de este epigrafe con el encabezado "Notas:"\n5. Prosa academica fluida, sin listas de puntos.\n6. Solo fuentes reales y verificables. Si no estas seguro de una cita, indicalo.\n7. NO incluyas bibliografia al final — solo las notas al pie.\n\nEscribe directamente el texto del epigrafe, empezando por su titulo.';
     try{
-      var maxTok=nivel==='larga'?3500:(nivel==='media'?2200:1400);
+      var maxTok=nivel==="larga"?8000:(nivel==="media"?5000:2500);
       var r=await callAI(prompt,notasGuardadas,maxTok);
       var notasMatch=(r.match(/^\d+\./gm)||[]).length;
       noteCounter+=Math.max(notasMatch,1);
