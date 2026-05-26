@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Asistente de Investigacion · Manual Historia del Deporte · UCAM</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pptxgenjs/3.12.0/pptxgen.bundle.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#1a1612;--ink2:#4a4540;--ink3:#8a8078;--ink4:#b8b0a8;--paper:#faf8f4;--paper2:#f4f0e8;--paper3:#ece5d8;--blue:#1e3a5f;--blue2:#2a5080;--blue-light:#e8f0fa;--gold:#a07820;--gold-light:#f8f0d0;--green:#1a4a2a;--green-light:#e0f0e4;--red:#8b2020;--border:#ddd8ce;--radius:8px;--sidebar:240px;--shadow:0 1px 4px rgba(26,22,18,.08)}
@@ -155,6 +157,7 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
   <div class="nav-section">Escritura</div>
   <div class="nav-item" onclick="showTab('creator',this)"><span class="nav-icon">✍️</span>Crear capitulo</div>
   <div class="nav-item" onclick="showTab('docs',this)"><span class="nav-icon">📄</span>Taller Google Docs</div>
+  <div class="nav-item" onclick="showTab('slides',this)"><span class="nav-icon">🎯</span>Taller diapositivas</div>
   <div class="nav-item" onclick="showTab('indice',this)"><span class="nav-icon">📋</span>Indice del manual</div>
   <nav><hr></nav>
   <div class="nav-section">Proyecto</div>
@@ -443,6 +446,61 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
   </div>
 </div>
 
+<!-- TALLER DIAPOSITIVAS -->
+<div id="panel-slides" class="panel">
+  <div class="page-title">Taller de diapositivas</div>
+  <div class="page-sub">Sube un tema en PowerPoint, el asistente lo analiza, corrige y mejora diapositiva por diapositiva, y genera el archivo mejorado con la plantilla UCAM.</div>
+  <div id="warn-slides" class="warn-box">Configura tu API key de Anthropic en Configuracion para activar el asistente IA.</div>
+  <div class="card">
+    <div class="card-title">1 &mdash; Cargar presentacion PowerPoint</div>
+    <div style="border:2px dashed var(--border);border-radius:var(--radius);padding:24px;text-align:center;cursor:pointer;transition:all .15s;background:var(--paper)" id="drop-zone" onclick="document.getElementById('pptx-input').click()" ondragover="event.preventDefault();this.style.borderColor='var(--blue)'" ondragleave="this.style.borderColor='var(--border)'" ondrop="handleDrop(event)">
+      <div style="font-size:32px;margin-bottom:8px">📂</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink2);margin-bottom:4px">Arrastra tu archivo .pptx aqui</div>
+      <div style="font-size:12px;color:var(--ink3)">o pulsa para seleccionar</div>
+      <input type="file" id="pptx-input" accept=".pptx" style="display:none" onchange="loadPptx(this.files[0])">
+    </div>
+    <div id="pptx-info" style="display:none;margin-top:12px;padding:10px 14px;background:var(--green-light);border-radius:var(--radius);font-size:13px;color:var(--green)"></div>
+  </div>
+  <div class="card" id="slides-preview-card" style="display:none">
+    <div class="card-title">2 &mdash; Estructura extraida</div>
+    <div id="slides-structure" style="font-size:13px;color:var(--ink2);line-height:1.7;max-height:280px;overflow-y:auto"></div>
+  </div>
+  <div class="card" id="slides-options-card" style="display:none">
+    <div class="card-title">3 &mdash; Que mejoras aplicar</div>
+    <div class="row2" style="margin-bottom:12px">
+      <div class="field"><label>Idioma de las diapositivas</label><select id="slides-lang"><option value="es">Espanol</option><option value="en">Ingles</option><option value="both">Analizar ambas versiones</option></select></div>
+      <div class="field"><label>Nivel de intervencion</label><select id="slides-nivel"><option value="revision">Revision y correccion (minimo)</option><option value="mejora">Mejora sustancial (recomendado)</option><option value="renovacion">Renovacion completa (maximo)</option></select></div>
+    </div>
+    <label style="font-size:12px;font-weight:600;color:var(--ink2);display:block;margin-bottom:8px">Tipos de mejora</label>
+    <div class="chips" id="chips-slides">
+      <div class="chip on" data-v="Correccion cientifica e historiografica">Correccion cientifica</div>
+      <div class="chip on" data-v="Deteccion de anacronismos y terminos desfasados">Anacronismos</div>
+      <div class="chip on" data-v="Enfoque socio-funcional: anadir el por que de cada practica deportiva">Enfoque socio-funcional</div>
+      <div class="chip" data-v="Reestructuracion didactica con pregunta vertebradora, desarrollo y cierre">Reestructuracion didactica</div>
+      <div class="chip" data-v="Generacion de pregunta provocadora de apertura y caso sorprendente">Pregunta provocadora</div>
+      <div class="chip" data-v="Actividades practicas, preguntas de entrada y salida, debate">Actividades y debate</div>
+      <div class="chip" data-v="Conexion con el presente y relevancia para el graduado en CAFD">Conexion con CAFD</div>
+      <div class="chip" data-v="Mejora y correccion de la version en ingles">Mejora version ingles</div>
+      <div class="chip" data-v="Actualizacion bibliografica con fuentes 2010-2024">Actualizacion bibliografica</div>
+    </div>
+    <div class="field" style="margin-top:12px"><label>Instruccion especifica (opcional)</label><textarea id="slides-instruccion" style="min-height:60px" placeholder="Ej: Pon especial enfasis en el enfoque funcionalista, conecta cada diapositiva con el marco teorico de Elias..."></textarea></div>
+  </div>
+  <div id="slides-analyze-wrap" style="display:none">
+    <div class="progress-bar" id="slides-progress"><div class="progress-fill" id="slides-progress-fill"></div></div>
+    <button class="btn-primary full" id="btn-slides" onclick="analyzeSlides()"><span id="icon-slides">🎯</span> Analizar y mejorar con el asistente</button>
+  </div>
+  <div id="slides-output" style="display:none;margin-top:14px">
+    <div style="background:var(--blue);color:#fff;padding:12px 20px;border-radius:var(--radius) var(--radius) 0 0;font-family:'Playfair Display',serif;font-size:16px;font-weight:700" id="slides-output-title">Informe de mejoras</div>
+    <div id="slides-output-body" style="background:#fff;border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:20px 24px;font-size:13.5px;line-height:1.8;white-space:pre-wrap;color:var(--ink);max-height:500px;overflow-y:auto"></div>
+    <div style="background:var(--paper2);border:1px solid var(--border);border-top:none;padding:14px 20px;border-radius:0 0 var(--radius) var(--radius);display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn-primary" id="btn-genpptx" onclick="generateImprovedPptx()"><span id="icon-genpptx">📊</span> Generar PowerPoint mejorado (.pptx)</button>
+      <button class="btn-sm btn-green" onclick="saveSlideAnalysis()">Guardar analisis</button>
+      <button class="btn-sm" onclick="copySlideResult()">Copiar informe</button>
+      <button class="btn-sm btn-gold" onclick="exportSlideResult()">Exportar .txt</button>
+    </div>
+  </div>
+</div>
+
 <!-- INDICE -->
 <div id="panel-indice" class="panel">
   <div class="page-title">Indice del manual</div>
@@ -544,7 +602,7 @@ function gck(){return localStorage.getItem(GCK)||'';}
 function saveApiKey(){var v=document.getElementById('apikey-input').value.trim();if(!v.startsWith('sk-')){alert('La key debe empezar por sk-ant...');return;}localStorage.setItem(AK,v);document.getElementById('key-status').innerHTML='<span class="ok-badge">API key guardada.</span>';checkConfig();}
 function saveSheetsUrl(){var v=document.getElementById('sheets-url-input').value.trim();if(!v.startsWith('https://script.google.com')){alert('URL incorrecta.');return;}localStorage.setItem(SK,v);setSyncState('spin','Conectando...');loadFromSheets();}
 function saveGClientId(){var v=document.getElementById('gclientid-input').value.trim();if(!v){alert('Introduce el Client ID.');return;}localStorage.setItem(GCK,v);document.getElementById('gclientid-status').innerHTML='<span class="ok-badge">Client ID guardado.</span>';}
-function checkConfig(){var hk=!!gak();['n','g','c','b','cr','docs'].forEach(function(x){var e=document.getElementById('warn-'+x);if(e)e.style.display=hk?'none':'block';});if(gak()){var i=document.getElementById('apikey-input');if(i)i.placeholder='API key guardada';}if(gsk()){var i2=document.getElementById('sheets-url-input');if(i2)i2.value=gsk().substring(0,55)+'...';}if(gck()){var i3=document.getElementById('gclientid-input');if(i3)i3.value=gck().substring(0,30)+'...';}}
+function checkConfig(){var hk=!!gak();['n','g','c','b','cr','docs','slides'].forEach(function(x){var e=document.getElementById('warn-'+x);if(e)e.style.display=hk?'none':'block';});if(gak()){var i=document.getElementById('apikey-input');if(i)i.placeholder='API key guardada';}if(gsk()){var i2=document.getElementById('sheets-url-input');if(i2)i2.value=gsk().substring(0,55)+'...';}if(gck()){var i3=document.getElementById('gclientid-input');if(i3)i3.value=gck().substring(0,30)+'...';}}
 function setSyncState(s,m){var d=document.getElementById('sdot'),t=document.getElementById('smsg');d.className='dot'+(s==='on'?'':s==='spin'?' spin':' off');t.textContent=m;}
 function showTab(n,el){document.querySelectorAll('.nav-item').forEach(function(t){t.classList.remove('active');});document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});el.classList.add('active');document.getElementById('panel-'+n).classList.add('active');if(n==='base')loadFromSheets();if(n==='indice')renderIndex();}
 document.querySelectorAll('.chips').forEach(function(g){g.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){var solo=['chips-ref-tipo','chips-cr-notas'];if(solo.includes(g.id)){g.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on');});}c.classList.toggle('on');});});});
@@ -573,7 +631,7 @@ function delItem(id){if(!confirm('Eliminar esta entrada?'))return;sheetsCall({ac
 function clearAll(){if(!confirm('Borrar TODAS las notas?'))return;sheetsCall({action:'clearAll'},function(r){if(r.ok){DB=[];renderBase([]);updateStats([]);}else alert('Error: '+r.error);});}
 
 // AI
-async function callAI(msg,extra,maxTok){var k=gak();if(!k)throw new Error('Sin API key. Ve a Configuracion.');var sys=SYSTEM;if(extra)sys+='\n\nNOTAS DEL INVESTIGADOR:\n'+extra;var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:maxTok||1400,system:sys,messages:[{role:'user',content:msg}]})});var d=await r.json();if(d.error)throw new Error(d.error.message);return d.content.map(function(c){return c.text||'';}).join('');}
+async function callAI(msg,extra,maxTok){var k=gak();if(!k)throw new Error('Sin API key. Ve a Configuracion.');var sys=SYSTEM;if(extra)sys+='\n\nNOTAS DEL INVESTIGADOR:\n'+extra;var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTok||1400,system:sys,messages:[{role:'user',content:msg}]})});var d=await r.json();if(d.error)throw new Error(d.error.message);return d.content.map(function(c){return c.text||'';}).join('');}
 function setRes(id,t,cls){var e=document.getElementById(id);e.style.display='block';e.className='result'+(cls?' '+cls:'');e.textContent=t;}
 function showAct(id){var e=document.getElementById('act-'+id);if(e)e.style.display='flex';}
 function copyRes(id){navigator.clipboard.writeText(document.getElementById(id).textContent).then(function(){alert('Copiado.');});}
@@ -657,7 +715,7 @@ async function generateChapter(){
     body.textContent=allText+(allText?'\n\n':'')+'[ Generando: '+ep+' ... ]';
     var prompt='Escribe UNICAMENTE el siguiente epigrafe del '+capVal+':\n\n'+ep+'\n\nNIVEL: '+nivelDesc[nivel]+'\nEXTENSION: '+extDesc[extension]+(enfoque?'\nENFOQUE ESPECIFICO DEL AUTOR: '+enfoque:'')+'\n\nREGLAS OBLIGATORIAS:\n1. ENFOQUE SOCIO-FUNCIONAL: explica que funcion tenia esta practica en esta sociedad, por que esa forma y no otra, que necesitaba la sociedad de ella.\n2. Conecta con el marco teorico cuando sea pertinente (Elias, Bourdieu, Guttmann, Mauss).\n3. Citas APA en el texto: (Autor, Anio, p. X)\n4. Notas al pie numeradas empezando por el numero '+noteCounter+' — pon las notas al final de este epigrafe con el encabezado "Notas:"\n5. Prosa academica fluida, sin listas de puntos.\n6. Solo fuentes reales y verificables. Si no estas seguro de una cita, indicalo.\n7. NO incluyas bibliografia al final — solo las notas al pie.\n\nEscribe directamente el texto del epigrafe, empezando por su titulo.';
     try{
-      var maxTok=nivel==="larga"?8000:(nivel==="media"?5000:2500);
+      var maxTok=nivel==='larga'?3500:(nivel==='media'?2200:1400);
       var r=await callAI(prompt,notasGuardadas,maxTok);
       var notasMatch=(r.match(/^\d+\./gm)||[]).length;
       noteCounter+=Math.max(notasMatch,1);
@@ -747,6 +805,442 @@ function saveItem(tipo){var item=lastItems[tipo];if(!item)return;var btn=event.t
 function exportItem(tipo){var item=lastItems[tipo];if(!item)return;var lines=['MANUAL HISTORIA DEL DEPORTE - UCAM','='.repeat(50),'Tipo: '+item.tipo,'Fecha: '+(item.fecha||'')];if(item.cap)lines.push('Capitulo: '+item.cap);if(item.ref)lines.push('Ref: '+item.ref);if(item.nota)lines.push('Nota: '+item.nota);if(item.query)lines.push('Busqueda: '+item.query);lines.push('','RESULTADO:',item.resultado);dlTxt(lines.join('\n'),'hd_'+tipo+'_'+Date.now()+'.txt');}
 function exportAll(){if(!DB.length){alert('No hay notas.');return;}var parts=['MANUAL HISTORIA DEL DEPORTE - UCAM','BASE DE INVESTIGACION','='.repeat(50),''];DB.forEach(function(i){var lines=['['+i.tipo.toUpperCase()+'] '+(i.fecha||''),'Capitulo: '+(i.cap||'-')];if(i.ref)lines.push('Ref: '+i.ref);if(i.nota)lines.push('Nota: '+i.nota);lines.push('','RESULTADO:',i.resultado,'','-'.repeat(60));parts=parts.concat(lines);});dlTxt(parts.join('\n'),'hd_proyecto_completo.txt');}
 function dlTxt(text,name){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));a.download=name;a.click();}
+
+// ── VARIABLES GLOBALES PARA EL MÓDULO DE DIAPOSITIVAS ──────────────────────
+var slidesData = [];        // Array de {num, title, body, notes}
+var slidesRawText = '';     // Texto plano extraído
+var slidesFileName = '';    // Nombre del archivo
+var slidesAnalysisResult = ''; // Resultado del análisis IA
+var improvedSlidesData = []; // Diapositivas mejoradas
+
+// ── LECTURA DEL PPTX EN EL NAVEGADOR ────────────────────────────────────────
+function handleDrop(event) {
+  event.preventDefault();
+  var file = event.dataTransfer.files[0];
+  if (file && file.name.endsWith('.pptx')) {
+    loadPptx(file);
+  } else {
+    alert('Por favor sube un archivo .pptx');
+  }
+}
+
+async function loadPptx(file) {
+  if (!file) return;
+  slidesFileName = file.name;
+  document.getElementById('drop-zone').style.borderColor = 'var(--blue)';
+  
+  try {
+    // Usar JSZip para leer el pptx (que es un ZIP)
+    var JSZip = window.JSZip;
+    if (!JSZip) {
+      alert('La libreria JSZip no ha cargado todavia. Espera unos segundos y vuelve a intentarlo.');
+      return;
+    }
+    
+    var zip = await JSZip.loadAsync(file);
+    var slides = [];
+    var slideFiles = Object.keys(zip.files).filter(function(f) {
+      return f.match(/^ppt\/slides\/slide\d+\.xml$/) && !f.includes('slideLayout') && !f.includes('slideMaster');
+    }).sort(function(a, b) {
+      var na = parseInt(a.match(/\d+/)[0]);
+      var nb = parseInt(b.match(/\d+/)[0]);
+      return na - nb;
+    });
+    
+    for (var i = 0; i < slideFiles.length; i++) {
+      var content = await zip.files[slideFiles[i]].async('string');
+      var slideInfo = parseSlideXml(content, i + 1);
+      slides.push(slideInfo);
+    }
+    
+    slidesData = slides;
+    slidesRawText = slides.map(function(s) {
+      return 'DIAPOSITIVA ' + s.num + (s.title ? ' — ' + s.title : '') + ':\n' + (s.body || '(sin texto)');
+    }).join('\n\n');
+    
+    // Mostrar info
+    var info = document.getElementById('pptx-info');
+    info.style.display = 'block';
+    info.textContent = '✓ ' + file.name + ' cargado — ' + slides.length + ' diapositivas extraidas';
+    
+    // Mostrar estructura
+    renderSlidesStructure(slides);
+    document.getElementById('slides-preview-card').style.display = 'block';
+    document.getElementById('slides-options-card').style.display = 'block';
+    document.getElementById('slides-analyze-wrap').style.display = 'block';
+    
+  } catch(e) {
+    alert('Error al leer el archivo: ' + e.message);
+    console.error(e);
+  }
+}
+
+function parseSlideXml(xmlContent, num) {
+  // Extraer todo el texto del XML de la diapositiva
+  var texts = [];
+  var titleText = '';
+  
+  // Parsear con DOMParser
+  try {
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(xmlContent, 'text/xml');
+    
+    // Obtener todos los elementos de texto
+    var txBodyElements = doc.querySelectorAll('txBody');
+    var isFirst = true;
+    
+    txBodyElements.forEach(function(txBody) {
+      var paras = txBody.querySelectorAll('p');
+      var paraTexts = [];
+      
+      paras.forEach(function(para) {
+        var runs = para.querySelectorAll('r');
+        var paraText = '';
+        runs.forEach(function(run) {
+          var t = run.querySelector('t');
+          if (t && t.textContent) {
+            paraText += t.textContent;
+          }
+        });
+        if (paraText.trim()) paraTexts.push(paraText.trim());
+      });
+      
+      if (paraTexts.length > 0) {
+        if (isFirst && paraTexts.length > 0) {
+          titleText = paraTexts[0];
+          if (paraTexts.length > 1) {
+            texts.push(paraTexts.slice(1).join('\n'));
+          }
+          isFirst = false;
+        } else {
+          texts.push(paraTexts.join('\n'));
+        }
+      }
+    });
+  } catch(e) {
+    // Fallback: regex simple
+    var matches = xmlContent.match(/<a:t[^>]*>([^<]+)<\/a:t>/g) || [];
+    var allText = matches.map(function(m) {
+      return m.replace(/<[^>]+>/g, '');
+    }).filter(function(t) { return t.trim(); });
+    titleText = allText[0] || '';
+    texts = allText.slice(1);
+  }
+  
+  return {
+    num: num,
+    title: titleText,
+    body: texts.join('\n'),
+    raw: titleText + '\n' + texts.join('\n')
+  };
+}
+
+function renderSlidesStructure(slides) {
+  var container = document.getElementById('slides-structure');
+  var html = '';
+  slides.forEach(function(s) {
+    var preview = (s.body || '').substring(0, 80) + ((s.body || '').length > 80 ? '...' : '');
+    html += '<div style="padding:6px 0;border-bottom:0.5px solid var(--border)">';
+    html += '<span style="font-weight:600;color:var(--blue);margin-right:8px">Diapo ' + s.num + '</span>';
+    html += '<span style="font-weight:500;color:var(--ink)">' + (s.title || '(sin titulo)') + '</span>';
+    if (preview) html += '<br><span style="font-size:12px;color:var(--ink3);padding-left:44px">' + preview + '</span>';
+    html += '</div>';
+  });
+  container.innerHTML = html || '<div class="empty-state">No se extrajo texto de las diapositivas.</div>';
+}
+
+// ── ANÁLISIS CON IA ─────────────────────────────────────────────────────────
+async function analyzeSlides() {
+  if (!slidesData.length) { alert('Carga primero un archivo PowerPoint.'); return; }
+  
+  var lang = document.getElementById('slides-lang').value;
+  var nivel = document.getElementById('slides-nivel').value;
+  var mejoras = gchips('chips-slides');
+  var instruccion = document.getElementById('slides-instruccion').value.trim();
+  
+  var nivelDesc = {
+    revision: 'revision y correccion minima — mantén la estructura existente, solo corrige errores y mejora terminos',
+    mejora: 'mejora sustancial — mantén la esencia pero reestructura y enriquece cada diapositiva significativamente',
+    renovacion: 'renovacion completa — reescribe el contenido desde cero manteniendo solo los datos clave'
+  };
+  
+  var langDesc = {
+    es: 'Las diapositivas estan en espanol.',
+    en: 'Las diapositivas estan en ingles.',
+    both: 'Analiza ambas versiones (espanol e ingles) y senala diferencias entre ellas.'
+  };
+  
+  var btn = document.getElementById('btn-slides');
+  btn.disabled = true;
+  document.getElementById('icon-slides').innerHTML = '<span class="spinner"></span>';
+  var progress = document.getElementById('slides-progress');
+  var fill = document.getElementById('slides-progress-fill');
+  progress.style.display = 'block';
+  fill.style.width = '0%';
+  
+  var output = document.getElementById('slides-output');
+  var body = document.getElementById('slides-output-body');
+  var titleEl = document.getElementById('slides-output-title');
+  output.style.display = 'block';
+  body.textContent = '';
+  slidesAnalysisResult = '';
+  improvedSlidesData = [];
+  
+  // Analizar en bloques de 3-4 diapositivas para no exceder tokens
+  var blockSize = 4;
+  var blocks = [];
+  for (var i = 0; i < slidesData.length; i += blockSize) {
+    blocks.push(slidesData.slice(i, i + blockSize));
+  }
+  
+  var allResults = '';
+  
+  for (var bi = 0; bi < blocks.length; bi++) {
+    var block = blocks[bi];
+    var pct = Math.round((bi / blocks.length) * 90);
+    fill.style.width = pct + '%';
+    titleEl.textContent = 'Analizando diapositivas ' + (bi * blockSize + 1) + '-' + Math.min((bi + 1) * blockSize, slidesData.length) + ' de ' + slidesData.length + '...';
+    
+    var blockText = block.map(function(s) {
+      return '=== DIAPOSITIVA ' + s.num + (s.title ? ' — ' + s.title : '') + ' ===\n' + (s.body || '(sin contenido)');
+    }).join('\n\n');
+    
+    var prompt = 'Eres un experto en historia del deporte, didactica universitaria y produccion de contenidos academicos digitales. ' +
+      langDesc[lang] + '\n\n' +
+      'NIVEL DE INTERVENCION: ' + nivelDesc[nivel] + '\n' +
+      'MEJORAS A APLICAR: ' + (mejoras.join(', ') || 'revision general') + '\n' +
+      (instruccion ? 'INSTRUCCION ESPECIFICA: ' + instruccion + '\n' : '') +
+      '\nMARCO TEORICO DEL MANUAL: El curso sigue un enfoque socio-funcional — siempre pregunta por que el deporte tiene esa forma en esa sociedad. Marco teorico: Elias, Bourdieu, Guttmann, Mauss.\n\n' +
+      'DIAPOSITIVAS A ANALIZAR:\n\n' + blockText + '\n\n' +
+      'Para cada diapositiva proporciona:\n' +
+      '1. PROBLEMAS DETECTADOS: errores, anacronismos, terminos desfasados, conceptos incorrectos\n' +
+      '2. CONTENIDO MEJORADO: el texto reescrito para cada diapositiva\n' +
+      '3. IDEAS ADICIONALES: preguntas, actividades, conexiones o recursos para enriquecer la diapositiva\n\n' +
+      'Estructura tu respuesta con encabezados claros por diapositiva. Se muy concreto y practico.';
+    
+    try {
+      var notasRel = DB.filter(function(i) { return i.tipo === 'nota' || i.tipo === 'cita'; }).slice(0, 4)
+        .map(function(i) { return (i.ref || '') + ': ' + (i.resultado || '').substring(0, 200); }).join('\n');
+      
+      var r = await callAI(prompt, notasRel || null, 4000);
+      allResults += (allResults ? '\n\n' : '') + r;
+      body.textContent = allResults;
+      body.scrollTop = body.scrollHeight;
+      
+      // Guardar versiones mejoradas para el PPTX
+      block.forEach(function(slide, idx) {
+        var slideSection = r.split('DIAPOSITIVA ' + slide.num)[1];
+        var improved = slideSection ? extractImprovedContent(slideSection, slide) : slide;
+        improvedSlidesData.push(improved);
+      });
+      
+    } catch(e) {
+      allResults += '\n\n[Error en diapositivas ' + (bi * blockSize + 1) + '-' + Math.min((bi + 1) * blockSize, slidesData.length) + ': ' + e.message + ']';
+      body.textContent = allResults;
+      block.forEach(function(slide) { improvedSlidesData.push(slide); });
+    }
+  }
+  
+  fill.style.width = '100%';
+  setTimeout(function() { progress.style.display = 'none'; fill.style.width = '0'; }, 800);
+  
+  slidesAnalysisResult = allResults;
+  titleEl.textContent = 'Informe de mejoras — ' + slidesFileName + ' (' + slidesData.length + ' diapositivas)';
+  
+  btn.disabled = false;
+  document.getElementById('icon-slides').textContent = '🎯';
+  
+  // Guardar en lastItems para poder guardar en Sheets
+  lastItems.slides = {
+    id: Date.now(),
+    tipo: 'slides',
+    ref: slidesFileName,
+    resultado: allResults,
+    fecha: new Date().toLocaleString('es-ES')
+  };
+}
+
+function extractImprovedContent(sectionText, originalSlide) {
+  // Intenta extraer el contenido mejorado de la respuesta de la IA
+  var improved = Object.assign({}, originalSlide);
+  var mejoradoMatch = sectionText.match(/CONTENIDO MEJORADO[:\s]*([^===]+?)(?:IDEAS ADICIONALES|===|$)/is);
+  if (mejoradoMatch) {
+    var text = mejoradoMatch[1].trim();
+    var lines = text.split('\n').filter(function(l) { return l.trim(); });
+    if (lines.length > 0) {
+      improved.title = lines[0].replace(/^[#\-\*]+\s*/, '');
+      improved.body = lines.slice(1).join('\n');
+      improved.ideas = '';
+    }
+    var ideasMatch = sectionText.match(/IDEAS ADICIONALES[:\s]*([^===]+?)(?:===|$)/is);
+    if (ideasMatch) improved.ideas = ideasMatch[1].trim();
+  }
+  return improved;
+}
+
+// ── GENERADOR DE PPTX MEJORADO CON PLANTILLA UCAM ───────────────────────────
+async function generateImprovedPptx() {
+  var PptxGenJS = window.PptxGenJS;
+  if (!PptxGenJS) {
+    alert('La libreria PptxGenJS no ha cargado. Espera y vuelve a intentarlo.');
+    return;
+  }
+  
+  var btn = event.target;
+  var orig = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner" style="border-top-color:var(--blue)"></span> Generando...';
+  btn.disabled = true;
+  
+  try {
+    var pres = new PptxGenJS();
+    pres.layout = 'LAYOUT_16x9';
+    pres.author = 'Prof. Dr. Alejandro Leiva Arcas';
+    pres.title = slidesFileName.replace('.pptx', '') + ' — Mejorado';
+    
+    // Colores UCAM
+    var UCAM = {
+      blue: '004379',
+      gold: 'EDAB00',
+      white: 'FFFFFF',
+      dark: '383838',
+      gray: 'E0E5E8',
+      lightBlue: 'D0E4F7'
+    };
+    
+    var dataToUse = improvedSlidesData.length > 0 ? improvedSlidesData : slidesData;
+    
+    dataToUse.forEach(function(slide, idx) {
+      var s = pres.addSlide();
+      s.background = { color: 'FFFFFF' };
+      
+      // Barra superior UCAM azul
+      s.addShape(pres.ShapeType.rect, {
+        x: 0, y: 0, w: 10, h: 0.55,
+        fill: { color: UCAM.blue },
+        line: { color: UCAM.blue }
+      });
+      
+      // Logo UCAM texto en barra superior
+      s.addText('UCAM', {
+        x: 8.8, y: 0.08, w: 1.1, h: 0.38,
+        fontSize: 11, fontFace: 'Arial', bold: true,
+        color: UCAM.white, align: 'right', valign: 'middle', margin: 0
+      });
+      
+      // Línea dorada decorativa
+      s.addShape(pres.ShapeType.rect, {
+        x: 0, y: 0.55, w: 10, h: 0.06,
+        fill: { color: UCAM.gold },
+        line: { color: UCAM.gold }
+      });
+      
+      // Número de diapositiva
+      s.addText(String(slide.num), {
+        x: 0.25, y: 0.08, w: 0.4, h: 0.38,
+        fontSize: 10, fontFace: 'Arial',
+        color: UCAM.gold, align: 'center', valign: 'middle', margin: 0
+      });
+      
+      // TÍTULO
+      var titleText = (slide.title || 'Sin título').substring(0, 120);
+      s.addText(titleText, {
+        x: 0.4, y: 0.72, w: 9.2, h: 0.7,
+        fontSize: 20, fontFace: 'Arial', bold: true,
+        color: UCAM.blue, align: 'left', valign: 'top', margin: 0
+      });
+      
+      // CUERPO
+      var bodyText = (slide.body || '').trim();
+      if (bodyText) {
+        var lines = bodyText.split('\n').filter(function(l) { return l.trim(); });
+        
+        if (lines.length <= 6) {
+          // Bullets normales
+          var bulletItems = lines.map(function(line, i) {
+            var isLast = i === lines.length - 1;
+            var isBold = line.startsWith('**') || line.startsWith('###') || line.startsWith('##');
+            var cleanLine = line.replace(/^[#\*\-]+\s*/, '').replace(/\*\*/g, '');
+            return {
+              text: cleanLine,
+              options: {
+                bullet: !isBold,
+                bold: isBold,
+                breakLine: !isLast,
+                fontSize: isBold ? 15 : 14,
+                color: isBold ? UCAM.blue : UCAM.dark
+              }
+            };
+          });
+          
+          s.addText(bulletItems, {
+            x: 0.4, y: 1.55, w: 9.2, h: 3.7,
+            fontFace: 'Arial', valign: 'top', margin: 0
+          });
+          
+        } else {
+          // Texto corrido para muchas líneas
+          s.addText(bodyText.substring(0, 800), {
+            x: 0.4, y: 1.55, w: 9.2, h: 3.7,
+            fontSize: 12, fontFace: 'Arial',
+            color: UCAM.dark, valign: 'top', margin: 0
+          });
+        }
+      }
+      
+      // IDEAS ADICIONALES si existen (caja destacada)
+      if (slide.ideas && slide.ideas.trim()) {
+        s.addShape(pres.ShapeType.rect, {
+          x: 0.4, y: 4.8, w: 9.2, h: 0.55,
+          fill: { color: UCAM.lightBlue },
+          line: { color: UCAM.blue, width: 0.5 }
+        });
+        s.addText('💡 ' + slide.ideas.substring(0, 150), {
+          x: 0.5, y: 4.82, w: 9.0, h: 0.5,
+          fontSize: 10, fontFace: 'Arial', italic: true,
+          color: UCAM.blue, valign: 'middle', margin: 0
+        });
+      }
+      
+      // Pie de página
+      s.addText('Prof. Dr. Alejandro Leiva Arcas  ·  Historia del Deporte  ·  CAFD  ·  UCAM', {
+        x: 0.4, y: 5.35, w: 9.2, h: 0.22,
+        fontSize: 8, fontFace: 'Arial',
+        color: 'B0B0B0', align: 'center', margin: 0
+      });
+    });
+    
+    // Guardar
+    var fileName = slidesFileName.replace('.pptx', '') + '_mejorado_UCAM.pptx';
+    await pres.writeFile({ fileName: fileName });
+    
+    btn.innerHTML = '✓ Descargado: ' + fileName;
+    setTimeout(function() { btn.innerHTML = orig; btn.disabled = false; }, 3000);
+    
+  } catch(e) {
+    alert('Error al generar el PPTX: ' + e.message);
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }
+}
+
+function saveSlideAnalysis() {
+  if (!lastItems.slides) { alert('Primero analiza unas diapositivas.'); return; }
+  var btn = event.target, orig = btn.textContent;
+  sheetsCall({ action: 'save', item: lastItems.slides }, function(r) {
+    if (r.ok) { btn.textContent = 'Guardado'; setTimeout(function() { btn.textContent = orig; }, 2000); }
+    else alert('Error: ' + r.error);
+  });
+}
+
+function copySlideResult() {
+  navigator.clipboard.writeText(slidesAnalysisResult).then(function() { alert('Informe copiado.'); });
+}
+
+function exportSlideResult() {
+  if (!slidesAnalysisResult) { alert('Analiza primero unas diapositivas.'); return; }
+  dlTxt('TALLER DE DIAPOSITIVAS — UCAM\n' + slidesFileName + '\n' + '='.repeat(50) + '\n\n' + slidesAnalysisResult, 'informe_diapositivas_' + Date.now() + '.txt');
+}
+
 
 // INIT
 loadIndex();populateSelects();checkConfig();
